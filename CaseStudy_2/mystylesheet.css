@@ -1,0 +1,109 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+header {
+    background-color: #D1B38E;
+    color: #946238;
+    font-family: "Juice ITC";
+    font-size: 150%;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    padding: 10px;
+}
+
+#wrapper {
+    background-color: #E2D1B2;
+    width: 80%;
+    min-width: 800px;
+    margin: auto;
+}
+
+#leftcolumn {
+    float: left;
+    width: 150px;
+}
+
+nav {
+    margin-top: 20px;
+    text-align: center;
+}
+
+nav a {
+    margin: 30px;
+    text-decoration: none;
+}
+
+nav a:link {
+    color: #7F563A;
+}
+
+nav a:visited {
+    color: #A38265;
+}
+
+#rightcolumn {
+    margin-left: 155px;
+    background-color: #F5F4DC;
+}
+
+.content {
+    padding: 20px 20px 150px 20px;
+    color: #45200C;
+}
+
+#imgroad {
+    margin: 0px 40px;
+    /* float: left; */
+}
+
+ul {
+    margin-left: 476px;
+    list-style-image: url(coffee.png);
+    /* image from https://www.flaticon.com/free-icon/coffee_996289?term=coffee+cup&page=1&position=27&origin=tag&related_id=996289 */
+}
+
+/* #floatright {
+    float: right;
+    margin-right: 150px;
+} */
+
+footer {
+    background-color: #D1B38E;
+    color: #231006;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a:link {
+    color: #45200C;
+}
+
+/* styles for Jobs page */
+form {
+    width: 600px;
+    padding: 10px 20px;
+}
+
+label { 
+    float: left; 
+    clear: left;
+    display: block; 
+    width: 120px; 
+    text-align: right; 
+    padding-right: 30px;
+    margin-top: 20px; 
+}
+
+#namelabel, #name  {
+    margin-top: 0px;
+}
+
+#date {
+    width: 150px;
+}
+
+input, textarea { 
+    margin-top: 20px; 
+    display: block;
+}
