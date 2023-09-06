@@ -1,5 +1,6 @@
 body {
     font-family: Verdana, Arial, sans-serif;
+    background-color: #E7E0AB;
 }
 
 header {
@@ -77,6 +78,42 @@ footer {
 
 footer a:link {
     color: #45200C;
+}
+
+/* styles for tables in Menu and menu page*/
+table {
+    margin: auto;
+    border: none;
+    width: 600px;
+    border-spacing: 1;
+}
+
+.table-col__one {
+    text-align: center;
+}
+
+#menu td, th {
+    padding: 10px;
+    font-family: Verdana, Arial, sans-serif;
+    border-style: none;
+}
+
+#music td, th {
+    padding: 1px;
+    font-family: Verdana, Arial, sans-serif;
+    border-style: none;
+}
+
+tr:nth-of-type(even) {
+    background-color: #F5F4DC;
+}
+
+#menu tr:nth-of-type(odd) {
+    background-color: #D1B38E;
+}
+
+#music tr:nth-of-type(odd) {
+    background-color: #E2D1B2;
 }
 
 /* styles for Jobs page */
