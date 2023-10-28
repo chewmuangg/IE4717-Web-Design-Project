@@ -4,6 +4,7 @@
   // store to test if they *were* logged in
   $old_user = $_SESSION['valid_user'];
   unset($_SESSION['valid_user']);
+  $_SESSION = array();
   session_destroy();
 ?>
 <html>

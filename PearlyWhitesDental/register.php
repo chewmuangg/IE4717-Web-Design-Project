@@ -48,5 +48,8 @@ if (!$result) {
 	//consider redirecting to dashboard, meaning that upon successful signup, user is logged in
 	echo "</script>";
 }
+
+// close data base connection
+$dbcnx->close();
 	
 ?>
