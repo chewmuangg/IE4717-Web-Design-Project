@@ -43,7 +43,7 @@
 	<!-- start of nav bar -->
 	<header>
 		<nav id="header-container">
-			<a href="index.html" id="header-logo">LOGO HERE</a>
+			<a href="index.html"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
 			<div id="header-links">
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
