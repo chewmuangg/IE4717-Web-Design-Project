@@ -80,6 +80,18 @@ header a {
     margin: 56px 0;
 }
 
+#leftcolumn {
+    margin-left: -300px;
+    float: left;
+    width: 800px;
+}
+
+#rightcolumn {
+    margin-left: 700px;
+    text-align: left;
+   
+}
+
 #location-container {
     display: flex;
     flex-direction: row;
@@ -174,6 +186,7 @@ hr {
   
 }
 
+/*submit buttons */
 .booknow {
     background-color: white;
     border: 1px solid;
@@ -206,4 +219,29 @@ table {
     padding-top: 20px;
     
     
+}
+
+/* formatting for text boxes in contact us */
+.form-row__one  {
+    margin: 10px;
+}
+
+.form-col__two small {
+    margin: 0px;
+   
+    color: red;
+}
+
+ul {
+    margin-top: 0px;
+    padding-left: 26px;
+    list-style-image: url(../images/phone.png);
+    /* image from <a href="https://www.flaticon.com/free-icons/phone" title="phone icons">Phone icons created by Prosymbols - Flaticon</a> */
+}
+
+ol {
+    margin-top: 0px;
+    padding-left: 26px;
+    list-style-image: url(../images/email.png);
+    /* image from <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Freepik - Flaticon</a> */
 }
