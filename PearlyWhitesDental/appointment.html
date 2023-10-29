@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Pearly Whites Dental</title>
+	<meta charset="utf-8">
+
+	<!-- stylesheet -->
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<!-- start of nav bar -->
+	<header>
+		<nav id="header-container">
+			<a href="index.html" id="header-logo">LOGO HERE</a>
+			<div id="header-links">
+				<a href="index.html">Home</a>
+				<a href="our-dentists.html">Our Dentists</a>
+				<a href="contact-us.html">Contact Us</a>
+				<a href="dashboard.php"><img src="images/icon_account.png" width="32" height="32"></a>
+			</div>
+		</nav>
+	</header>
+	<!-- end of nav bar -->
+
+	<div class="container appt">
+		<!-- page content -->
+		<div class="appt-content">
+			<h1>Book an Appointment</h1>
+			<form method="post" action="confirmation.php">
+				<div>
+					<p>Step 1 of 3: Choose your dentist</p>
+					<input type="radio" name="dentist" value="2001">Dr. 1
+					<input type="radio" name="dentist" value="2002">Dr. 2
+					<input type="radio" name="dentist" value="2003">Dr. 3
+				</div>
+				<div>
+					<p>Step 2 of 3: Choose a date & time</p>
+					<div class="row ">
+						<div>
+							<input type="date" name="date" required>
+						</div>
+						<div class="col">
+							<div>
+								<input type="radio" name="time" value="0900">9.00 am
+								<input type="radio" name="time" value="1000">10.00 am
+								<input type="radio" name="time" value="1100">11.00 am
+							</div>
+							<div>
+								<input type="radio" name="time" value="1330">1.30 pm
+								<input type="radio" name="time" value="1430">2.30 pm
+								<input type="radio" name="time" value="1530">3.30 pm
+							</div>
+							<div>
+								<input type="radio" name="time" value="1630">4.30 pm
+								<input type="radio" name="time" value="1730">5.30 pm
+								<input type="radio" name="time" value="1830">6.30 pm
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<p>Step 3 of 3: Choose a service</p>
+					<select name="serviceType">
+						<option>--- Select one ---
+						<option value="s1">Service 1
+						<option value="s2">Service 2
+						<option value="s3">Service 3
+						<option value="s4">Service 4
+						<option value="s5">Service 5
+						<option value="s6">Service 6
+					</select>
+				</div>
+				<input type="submit" class="btn-pri" value="Confirm booking">
+			</form>
+		</div>
+	</div>
+
+	<!-- start of footer -->
+	<footer>
+		<div id="footer-content">
+			123 Sparkling Street Singapore 987654
+			<br>
+			6123 4567
+			<br>
+			<a href="mailto:enquiry@pearlywhites.com">
+				enquiry@pearlywhites.com
+			</a>
+			<br>
+		</div>
+		<hr width="80%" size="1px">
+		<small><i>Copyright &copy; 2023 Pearly Whites Dental</i></small>
+	</footer>
+	<!-- end of footer -->
+</body>
+
+</html>

@@ -24,18 +24,39 @@
 	</header>
 	<!-- end of nav bar -->
 
-	<div class="main-container">
-		<!-- banner image -->
-		<div class="banner-img">
-			<div class="banner-content">
-				<h1>Signup page</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-			</div>
-		</div>
-
-		<!-- page content -->
-		<div class="main-content">
-			<h1>Signup</h1>
+	<!-- page content -->
+	<div class="login-container">
+		<div id="left-img"></div>
+		<div id="right-side">
+			<h1>Welcome to Pearly Whites Dental</h1>
+			<h2>Sign up for an Account to book your appointments easily!</h2>
+			<form method="post" action="register.php" id="loginForm">
+				<div>
+					<label for="name" class="form-row__one">Name:</label>
+					<div class="form-col__two">
+						<input type="text" name="name" id="name" class="form-row__one" size="30" required placeholder="Enter your name here">
+						<small id="name-error"></small>
+					</div>
+				</div>
+				<div>
+					<label for="email">Email:</label>
+					<div class="form-col__two">
+						<input name="email" id="email" size="30" required placeholder="Enter your email here">
+						<small id="email-error"></small>
+					</div>
+				</div>
+				<div>
+					<label for="password">Password:</label>
+					<br>
+					<input type="password" name="password" id="password" size="30" required placeholder="Enter your password here">
+				</div>
+				<div>
+					<label for="password">Confirm password:</label>
+					<br>
+					<input type="password" name="password2" id="password2" size="30" required placeholder="Enter your password again">
+				</div>
+				<input id="btnSubmit" type="submit" value="Sign Up">
+			</form>
 		</div>
 	</div>
 

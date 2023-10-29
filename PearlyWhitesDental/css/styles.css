@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    padding: 0px
+    padding: 0px;
 }
 
 /* header styling */
@@ -19,8 +19,9 @@ header {
 }
 
 #header-container {
-    width: 1280px;
+    min-width: 1280px;
     margin: auto;
+    padding: 0px 64px;
     display: flex;
     justify-content: space-between;
 }
@@ -32,6 +33,13 @@ header {
 
 header a {
     text-decoration: none;
+}
+
+#header-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #header-links a {
@@ -68,6 +76,83 @@ header a {
 
 /* page content styling */
 .main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 85px auto 0px auto;
+}
+
+.container {
+    min-width: 1280px;
+    display: flex;
+    margin: 85px auto 0px auto;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.vertical-line {
+    border-left: 1px solid grey;
+    height: 80px;
+    margin: 0px 24px;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+/* contact us page styling */
+.contact-us {
+    margin: 56px 0;
+}
+
+#location-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* login page styling*/
+.login-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: auto;
+}
+
+#left-img {
+    width: 50%;
+    height: 800px;
+    background-image: url(../images/sample.jpg);
+    background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#right-side {
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,13 +203,69 @@ footer {
     color: black;
     text-align: center;
     padding: 40px 0px 24px 0px;
+    margin: auto;
 }
 
-hr {
-    border-color: rgb(197, 210, 215);
-    margin: 24px auto;
+/* dashboard page styling*/
+.schdl-card {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+    margin-bottom: 16px;
+    background-color: peachpuff;
+    border-radius: 8px;
 }
 
+.no-schdl-card {
+    background-color: peachpuff;
+    padding: 16px 40px;
+    border-radius: 8px;
+}
+
+/* book appointment page styling */
+.appt {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 40px 64px;
+}
+
+.appt-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+select {
+    width: 150px;
+}
+
+/* appt booked page styling */
+.booked {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 64px;
+}
+
+.appt-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    width: 400px;
+    margin: auto;
+    background-color: blanchedalmond;
+}
+
+/* footer styling */
+footer {
+    width: 100%;
+    background-color: #D1B38E;
+    color: black;
 
 .row1 {
 	display: flex;
@@ -206,4 +347,10 @@ table {
     padding-top: 20px;
     
     
+    margin: auto;
+}
+
+hr {
+    border-color: rgb(197, 210, 215);
+    margin: 24px auto;
 }
