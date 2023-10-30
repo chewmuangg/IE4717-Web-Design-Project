@@ -424,12 +424,21 @@ table {
     color: red;
 }
 
+.icons {
+    display: flex;
+    align: center;
+    
+}
+
+
 ul {
     margin-top: 0px;
     padding-left: 26px;
     list-style-image: url(../images/phone.png);
     /* image from <a href="https://www.flaticon.com/free-icons/phone" title="phone icons">Phone icons created by Prosymbols - Flaticon</a> */
 }
+
+
 
 ol {
     margin-top: 0px;
