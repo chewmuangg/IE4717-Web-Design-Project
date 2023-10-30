@@ -26,55 +26,74 @@
 
 	<div class="container appt">
 		<!-- page content -->
-		<div class="appt-content">
-			<h1>Book an Appointment</h1>
-			<form method="post" action="confirmation.php">
-				<div>
-					<p>Step 1 of 3: Choose your dentist</p>
-					<input type="radio" name="dentist" value="2001">Dr. 1
-					<input type="radio" name="dentist" value="2002">Dr. 2
-					<input type="radio" name="dentist" value="2003">Dr. 3
-				</div>
-				<div>
-					<p>Step 2 of 3: Choose a date & time</p>
-					<div class="row ">
-						<div>
-							<input type="date" name="date" required>
+		<h1>Book an Appointment</h1>
+			<div class="appt-form-container">
+				<form method="post" action="confirmation.php" id="appt-form">
+					<div class="col">
+						<p>Step 1 of 3: Choose your dentist</p>
+						<div class="appt-form-row1">
+							<input type="radio" name="dentist" class="radio" id="dr1" value="2001" required>
+							<label class="radio-label-dentist label-1" for="dr1">Dr. Emily Pearson</label>
+							<input type="radio" name="dentist" class="radio" id="dr2" value="2002">
+							<label class="radio-label-dentist label-2" for="dr2">Dr. Carlos Novakowski</label>
+							<input type="radio" name="dentist" class="radio" id="dr3" value="2003">
+							<label class="radio-label-dentist label-3" for="dr3">Dr. Sarah Rodriguez</label>
 						</div>
-						<div class="col">
+					</div>
+					<div class="col">
+						<p>Step 2 of 3: Choose a date & time</p>
+						<div class="row justify-content-space-between">
 							<div>
-								<input type="radio" name="time" value="0900">9.00 am
-								<input type="radio" name="time" value="1000">10.00 am
-								<input type="radio" name="time" value="1100">11.00 am
+								<input type="date" name="date" id="date" required>
+								<!-- include js for min date selection -->
 							</div>
-							<div>
-								<input type="radio" name="time" value="1330">1.30 pm
-								<input type="radio" name="time" value="1430">2.30 pm
-								<input type="radio" name="time" value="1530">3.30 pm
-							</div>
-							<div>
-								<input type="radio" name="time" value="1630">4.30 pm
-								<input type="radio" name="time" value="1730">5.30 pm
-								<input type="radio" name="time" value="1830">6.30 pm
+							<div class="col">
+								<div class="time-row">
+									<input type="radio" name="time" class="radio" id="timeslot1" value="0900">
+									<label class="radio-label label-1 timeslot" for="timeslot1">9.00 AM</label>
+									
+									<input type="radio" name="time" class="radio" id="timeslot2" value="1000">
+									<label class="radio-label label-2 timeslot" for="timeslot2">10.00 AM</label>
+									
+									<input type="radio" name="time" class="radio" id="timeslot3" value="1100">
+									<label class="radio-label label-3 timeslot" for="timeslot3">11.00 AM</label>
+								</div>
+								<div class="time-row">
+									<input type="radio" name="time" class="radio" id="timeslot4" value="1330">
+									<label class="radio-label label-4 timeslot" for="timeslot4">1.30 PM</label>
+									
+									<input type="radio" name="time" class="radio" id="timeslot5" value="1430">
+									<label class="radio-label label-5 timeslot" for="timeslot5">2.30 PM</label>
+									
+									<input type="radio" name="time" class="radio" id="timeslot6" value="1530">
+									<label class="radio-label label-6 timeslot" for="timeslot6">3.30 PM</label>
+								</div>
+								<div class="time-row">
+									<input type="radio" name="time" class="radio" id="timeslot7" value="1630">
+									<label class="radio-label label-7 timeslot" for="timeslot7">4.30 PM</label>
+									
+									<input type="radio" name="time" class="radio" id="timeslot8" value="1730">
+									<label class="radio-label label-8 timeslot" for="timeslot8">5.30 PM</label>
+									
+									<input type="radio" name="time" class="radio" id="timeslot9" value="1830">
+									<label class="radio-label label-9 timeslot" for="timeslot9">6.30 PM</label>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div>
-					<p>Step 3 of 3: Choose a service</p>
-					<select name="serviceType">
-						<option>--- Select one ---
-						<option value="s1">Service 1
-						<option value="s2">Service 2
-						<option value="s3">Service 3
-						<option value="s4">Service 4
-						<option value="s5">Service 5
-						<option value="s6">Service 6
-					</select>
-				</div>
-				<input type="submit" class="btn-pri" value="Confirm booking">
-			</form>
-		</div>
+					<div class="col">
+						<p>Step 3 of 3: Choose a service</p>
+						<select name="serviceType">
+							<option>--- Select one ---
+							<option value="Scaling & Polishing">Scaling & Polishing
+							<option value="Consultation">Consultation
+						</select>
+					</div>
+					<div class="appt-form-submit">
+						<input type="submit" class="btn-outline btn-submit" value="Confirm booking">
+					</div>
+				</form>
+			</div>
 	</div>
 
 	<!-- start of footer -->

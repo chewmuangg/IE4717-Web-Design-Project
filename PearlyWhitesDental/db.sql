@@ -18,4 +18,4 @@ create table appointments
 );
 
 /* insert dentists accounts into users table */
-insert into users values (1, 1000, "admin", "admin@admin.com", "admin");
+insert into users values (9, 1000, "admin", "admin@admin.com", "admin");

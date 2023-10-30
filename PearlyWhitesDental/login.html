@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Pearly Whites Dental</title>
+	<title>Log In | Pearly Whites Dental</title>
 	<meta charset="utf-8">
 
 	<!-- stylesheet -->
@@ -18,7 +18,7 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
-				<a href="login.html" class="login" style="color: white";>Log In</a>
+				<a href="login.html" class="btn-pri" style="color: white;">Log In</a>
 			</div>
 		</nav>
 	</header>
@@ -34,7 +34,7 @@
 				<div>
 					<label>Log in as:</label>
 					<br>
-					<input type="radio" name="account" value="1" checked> Patient
+					<input type="radio" name="account" value="1" checked required> Patient
 					<input type="radio" name="account" value="9"> Dentist
 				</div>
 				<div>
@@ -42,6 +42,7 @@
 					<div class="form-col__two">
 						<input name="email" id="email" size="30" required placeholder="Enter your email here">
 						<small id="email-error"></small>
+						<!-- add in js checking -->
 					</div>
 				</div>
 				<div>
@@ -49,9 +50,10 @@
 					<br>
 					<input type="password" name="password" id="password" size="30" required placeholder="Enter your password here">
 				</div>
-				<input id="btnSubmit" type="submit" value="Log In">
+				<input class="btn-pri" id="btnSubmit" type="submit" value="Log In">
+				<!-- backend check for valid user -->
 			</form>
-			<a href="signup.html" class="btnForm btnCreate">Create an Account</a>
+			<a href="signup.html" class="btn-outline btn-submit">Create an Account</a>
 		</div>
 	</div>
 

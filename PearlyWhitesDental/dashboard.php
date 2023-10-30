@@ -108,11 +108,12 @@
 	<div class="container booked">
 		<h1>Hello, <?php echo $_SESSION['valid_user'];?>!</h1>
 		<p>What would you like to do today?</p>
+		<!-- logout button -->
 		<a href="logout.php">Logout</a>
 
 		<!-- appointment schedule -->
 
-		<div class="appt">
+		<div class="dashboard">
             <div class="col">
                 <div class="row justify-content-space-between align-items-center">
                     <h2>My Appointments</h2>

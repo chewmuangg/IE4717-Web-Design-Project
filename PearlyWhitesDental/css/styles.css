@@ -45,7 +45,7 @@ header a {
 #header-links a {
     margin: 0px 12px;
     color: black;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .homename {
@@ -82,13 +82,13 @@ header a {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 85px auto 0px auto;
+    margin: 90px auto 0px auto;
 }
 
 .container {
     min-width: 1280px;
     display: flex;
-    margin: 85px auto 0px auto;
+    margin: 90px auto 0px auto;
 }
 
 .row {
@@ -121,6 +121,47 @@ header a {
 
 .text-align-center {
     text-align: center;
+}
+
+/*buttons*/
+.btn-pri {
+    color: white;
+    background-color: #486284;
+    border-radius: 8px;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-outline {
+    color: #486284;
+    border: 2px solid #486284;
+    border-radius: 8px;
+    padding: 12px 24px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-outline:hover {
+    background-color: #486284;
+    color: white;
+}
+
+/* form submit buttons */
+.btn-submit {
+    background-color: white;
+}
+
+/* footer styling */
+footer {
+    width: 100%;
+    background-color: #FFB890;
+    color: black;
+    text-align: center;
+    padding: 40px 0px 24px 0px;
+    margin: auto;
 }
 
 /* contact us page styling */
@@ -172,17 +213,11 @@ header a {
     margin: auto;
 }
 
-/* footer styling */
-footer {
-    width: 100%;
-    background-color: #FFB890;
-    color: black;
-    text-align: center;
-    padding: 40px 0px 24px 0px;
-    margin: auto;
+/* dashboard page styling*/
+.dashboard {
+	padding: 40px 64px;
 }
 
-/* dashboard page styling*/
 .schdl-card {
     display: flex;
     flex-direction: row;
@@ -203,19 +238,95 @@ footer {
 
 /* book appointment page styling */
 .appt {
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 40px 64px;
-}
-
-.appt-content {
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding: 40px 64px;
+	/*min-height: 540px;*/
+}
+
+#appt-form {
+    width: 800px;
+}
+
+.appt-form-container {
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+	align-items: center;
+	margin: auto;
+}
+
+.appt-form-row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.appt-form-submit {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0px;
+
+}
+
+/* radio buttons styling */
+.radio {
+	display: none;
+}
+
+.radio-label-dentist {
+	padding: 12px 32px;
+	background-color: #b5d4f5;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.radio-label {
+    margin: 0px 12px;
+	padding: 12px 24px;
+	background-color: #b5d4f5;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+#dr1:checked ~ .label-1,
+#dr2:checked ~ .label-2,
+#dr3:checked ~ .label-3 {
+	background-color: #0069d9;
+}
+
+#timeslot1:checked ~ .label-1,
+#timeslot2:checked ~ .label-2,
+#timeslot3:checked ~ .label-3,
+#timeslot4:checked ~ .label-4,
+#timeslot5:checked ~ .label-5,
+#timeslot6:checked ~ .label-6,
+#timeslot7:checked ~ .label-7,
+#timeslot8:checked ~ .label-8,
+#timeslot9:checked ~ .label-9 {
+	background-color: #0069d9;
+}
+
+.timeslot {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+}
+
+.time-row {
+    margin-bottom: 16px;
+}
+
+#date {
+    width: 200px;
+    font-size: 16px;
 }
 
 select {
-    width: 150px;
+    width: 200px;
+    font-size: 16px;
 }
 
 /* appt booked page styling */
@@ -237,12 +348,7 @@ select {
     background-color: blanchedalmond;
 }
 
-.row1 {
-	display: flex;
-	flex-direction: row;
-    
-}
-
+/* custom styles */
 .column {
 	display: flex;
 	flex-direction: column;
@@ -269,29 +375,16 @@ select {
     padding-top: 100px;
 }
 
-.columndentist {
+/* dentist page styling*/
+.col-dentist {
 	display: flex;
 	flex-direction: column;
 	width: 300px;
 	margin: 100px;
 }
 
-.login {
-    background-color: #486284;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-  
-}
-
-/*submit buttons */
-.booknow {
-    background-color: white;
-    border: 1px solid;
-    padding: 10px;
-    border-color:#486284;
-    text-decoration: none;
+.dentist-subtitle {
+	margin-top: 12px;
 }
 
 table {
