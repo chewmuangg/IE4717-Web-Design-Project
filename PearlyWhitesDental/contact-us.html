@@ -37,38 +37,8 @@
 		<!-- page content -->
 		<div class="main-content">
 			<div id="leftcolumn">
-				<h1>Send us your enquiries below </h1>
-				<form method="post" action="show_post.php">
-					<div>
-						<div class="form-col__two">
-							<input type="text" name="name" id="name" class="form-row__one" size="50" required placeholder="Name">
-							<br>
-							<small id="name-error"></small>
-						</div>
-					</div>
-					<div>
-						<div class="form-col__two">
-							<input type="text" name="contactnumber" id="contactnumber" class="form-row__one" size="50" required placeholder="Contact Number">
-						</div>
-					</div>
-					<div>
-						<div class="form-col__two">
-							<input name="email" id="email" class="form-row__one" size="50" required placeholder="Email address">
-							<br>
-							<small id="email-error"></small>
-						</div>
-					</div>
-					
-					<div>
-						<div class="form-col__two">
-							<textarea name="message" id="message" class="form-row__one" rows="4" cols="50" required placeholder="Message"></textarea>
-							<br>
-							<small id="msg-error"></small>
-						</div>
-					</div>
-					<br>
-					<input id="btnSubmit" type="submit" class="booknow" style="color: #486284;" value="Send message">
-				</form>
+				<br>
+				<img src="images/map.png" alt="map">
 			</div>
 
 			<div id="rightcolumn">
@@ -84,13 +54,52 @@
 				Last appointment timeslot: 6.30pm
 				<br>
 				<h2>Contacts</h2>
-				<ul>
-					<li>61234567</li>
-				</ul>
-				<ol>
-					<li>enquiry@pearlywhites.com</li>
-				</ol>
+				<div class="icons">
+					<img src="images/phone.png" alt="phone">
+					<div style="margin-left: 10px">61234567</div>
+				</div>
+				<div class="icons">
+					<img src="images/email.png" alt="email">
+					<div style="margin-left: 10px">enquiry@pearlywhites.com</div>
+				</div>
+					
 			</div>
+			
+		</div>
+		<div>
+			<br>
+			<h1>Send us your enquiries below </h1>
+			<form method="post" action="show_post.php">
+				<div>
+					<div class="form-col__two">
+						<input type="text" name="name" id="name" class="form-row__one" size="50" required placeholder="Name">
+						<br>
+						<small id="name-error"></small>
+					</div>
+				</div>
+				<div>
+					<div class="form-col__two">
+						<input type="text" name="contactnumber" id="contactnumber" class="form-row__one" size="50" required placeholder="Contact Number">
+					</div>
+				</div>
+				<div>
+					<div class="form-col__two">
+						<input name="email" id="email" class="form-row__one" size="50" required placeholder="Email address">
+						<br>
+						<small id="email-error"></small>
+					</div>
+				</div>
+				
+				<div>
+					<div class="form-col__two">
+						<textarea name="message" id="message" class="form-row__one" rows="4" cols="50" required placeholder="Message"></textarea>
+						<br>
+						<small id="msg-error"></small>
+					</div>
+				</div>
+				<br>
+				<input id="btnSubmit" type="submit" class="booknow" style="color: #486284;" value="Send message">
+			</form>
 		</div>
 	</div>
 	
