@@ -7,6 +7,7 @@
 
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
+	<script type = "text/javascript" src = "scripts.js"></script>
 </head>
 
 <body>
@@ -34,17 +35,68 @@
 		</div>
 
 		<!-- page content -->
-		<div class="main-content contact-us">
-			<div id="location-container">
-				<img src="images/sample.jpg" width="400px" height="400px">
-				<h1>contact us</h1>
+		<div class="main-content">
+			<div id="leftcolumn">
+				<h1>Send us your enquiries below </h1>
+				<form method="post" action="show_post.php">
+					<div>
+						<div class="form-col__two">
+							<input type="text" name="name" id="name" class="form-row__one" size="50" required placeholder="Name">
+							<br>
+							<small id="name-error"></small>
+						</div>
+					</div>
+					<div>
+						<div class="form-col__two">
+							<input type="text" name="contactnumber" id="contactnumber" class="form-row__one" size="50" required placeholder="Contact Number">
+						</div>
+					</div>
+					<div>
+						<div class="form-col__two">
+							<input name="email" id="email" class="form-row__one" size="50" required placeholder="Email address">
+							<br>
+							<small id="email-error"></small>
+						</div>
+					</div>
+					
+					<div>
+						<div class="form-col__two">
+							<textarea name="message" id="message" class="form-row__one" rows="4" cols="50" required placeholder="Message"></textarea>
+							<br>
+							<small id="msg-error"></small>
+						</div>
+					</div>
+					<br>
+					<input id="btnSubmit" type="submit" class="booknow" style="color: #486284;" value="Send message">
+				</form>
 			</div>
-			<div id="enquiry-container">
-				<h3>Drop us your enquires below</h3>
+
+			<div id="rightcolumn">
+				<h2>Address</h2>
+				123 Sparkling Street
+				<br>
+				<br>
+				Singapore 987654
+				<br>			
+				<h2>Opening hours</h2>
+				Daily, 9am to 8pm
+				<br>
+				Last appointment timeslot: 6.30pm
+				<br>
+				<h2>Contacts</h2>
+				<ul>
+					<li>61234567</li>
+				</ul>
+				<ol>
+					<li>enquiry@pearlywhites.com</li>
+				</ol>
 			</div>
 		</div>
 	</div>
-
+	
+	
+	
+	<br>
 	<!-- start of footer -->
 	<footer>
 		<div id="footer-content">
