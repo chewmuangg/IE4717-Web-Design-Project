@@ -152,7 +152,8 @@
 					<h2 <?php if($_SESSION['user_type'] == 1) echo 'style="display: none;"'; ?>>Scheduled Appointments</h2>
 
 					<!-- show button for patients accs, hide for dentists accs -->
-                    <a class="btn-pri" href="appointment.html" <?php if($_SESSION['user_type'] == 9) echo 'style="display: none;"'; ?>>Book an Appointment</a>
+                    <!-- <a class="btn-pri" href="appointment.html" <?php if($_SESSION['user_type'] == 9) echo 'style="display: none;"'; ?>>Book an Appointment</a> -->
+                    <a class="btn-pri" href="appointment.html" >Book an Appointment</a>
                 </div>
 
 				<!-- start of an appointment card --> 

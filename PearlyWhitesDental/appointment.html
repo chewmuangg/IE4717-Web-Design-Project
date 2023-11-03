@@ -5,6 +5,9 @@
 	<title>Pearly Whites Dental</title>
 	<meta charset="utf-8">
 
+	<!-- javascript-->
+	<script type="text/javascript" src="appt_form.js"></script>
+
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
 </head>
@@ -40,14 +43,35 @@
 						<label class="radio-label-dentist label-3" for="dr3">Dr. Sarah Rodriguez</label>
 					</div>
 				</div>
+
 				<div class="col">
-					<p>Step 2 of 3: Choose a date & time</p>
+					<p>Step 2 of 3: Choose a service</p>
+					<select name="serviceType">
+						<option>--- Select one ---</option>
+						<option value="Consultation">Consultation</option>
+						<option value="Scaling & Polishing">Scaling & Polishing</option>
+						<option value="Emergency Dental Care">Emergency Dental Care</option>
+						<option value="Crowns & Bridges">Crowns & Bridges</option>
+						<option value="Dentures">Dentures</option>
+						<option value="Orthodontics">Orthodontics</option>
+						<option value="Endodontics">Endodontics</option>
+						<option value="Periodontal Care">Periodontal Care</option>
+						<option value="Pediatric Dentistry">Pediatric Dentistry</option>
+						<option value="Oral Surgery">Surgery</option>
+						<option value="X-ray and Diagnostic Imaging">Scaling & Polishing</option>
+						<option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+					</select>
+				</div>
+
+				<div class="col">
+					<p>Step 3 of 3: Choose a date & time</p>
 					<div class="row justify-content-space-between">
 						<div>
-							<input type="date" name="date" id="date" required>
+							<input type="date" name="date" id="date" required oninput="showTimeslots()">
 							<!-- include js for min date selection -->
 						</div>
-						<div class="col">
+						
+						<div class="col" id="timeslot-col">
 							<div class="time-row">
 								<input type="radio" name="time" class="radio" id="timeslot1" value="0900">
 								<label class="radio-label label-1 timeslot" for="timeslot1">9.00 AM</label>
@@ -81,24 +105,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col">
-					<p>Step 3 of 3: Choose a service</p>
-					<select name="serviceType">
-						<option>--- Select one ---</option>
-						<option value="Consultation">Consultation</option>
-						<option value="Scaling & Polishing">Scaling & Polishing</option>
-						<option value="Emergency Dental Care">Emergency Dental Care</option>
-						<option value="Crowns & Bridges">Crowns & Bridges</option>
-						<option value="Dentures">Dentures</option>
-						<option value="Orthodontics">Orthodontics</option>
-						<option value="Endodontics">Endodontics</option>
-						<option value="Periodontal Care">Periodontal Care</option>
-						<option value="Pediatric Dentistry">Pediatric Dentistry</option>
-						<option value="Oral Surgery">Surgery</option>
-						<option value="X-ray and Diagnostic Imaging">Scaling & Polishing</option>
-						<option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
-					</select>
-				</div>
+				
 				<div class="appt-form-submit">
 					<input type="submit" class="btn-outline btn-submit" value="Confirm booking">
 				</div>

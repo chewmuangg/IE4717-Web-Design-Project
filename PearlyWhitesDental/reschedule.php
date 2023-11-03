@@ -138,7 +138,7 @@ $dbcnx->close();
 				<div class="row justify-content-space-between">
 					<div>
 						<input type="date" name="date" id="newDate" required>
-						<!-- include js for min date selection -->
+						<!-- event handler assigned in input_display.js -->
 					</div>
 					<div class="col">
 						<div class="time-row">
@@ -171,6 +171,7 @@ $dbcnx->close();
 							<input type="radio" name="time" class="radio" id="timeslot9" value="1830">
 							<label class="radio-label label-9 timeslot" for="timeslot9">6.30 PM</label>
 						</div>
+						<!-- event handler for radio button group "time" assigned in input_display.js -->
 					</div>
 				</div>
 				<!-- hidden input -->
