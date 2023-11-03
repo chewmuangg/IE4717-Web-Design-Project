@@ -16,6 +16,3 @@ create table appointments
   time char(50) not null,
   serviceType char(50) not null
 );
-
-/* insert dentists accounts into users table */
-insert into users values (9, 1000, "admin", "admin@admin.com", "admin");

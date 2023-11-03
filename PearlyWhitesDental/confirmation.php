@@ -9,15 +9,19 @@
 	$date = $_POST['date'];
 	$time = $_POST['time'];
 	$service = $_POST['serviceType'];
+	$name = $_POST['nameDisplayed'];
 	$is_booked = false;
+	$is_reschedule = false;
 
 	// check if reschedule or new appt
-	if (isset($_POST['reschedule'])) {
+	if (isset($_POST['rescheduleID'])) {
 		// appointment ID variable
-		$apptId = $_POST['reschedule'];
+		$apptId = $_POST['rescheduleID'];
+		$is_reschedule = true;
 		
 		// query formulation
 		$query = "UPDATE appointments SET date='".$date."', time='".$time."' WHERE apptId=".$apptId;
+
 	} else {
 		// query formulation
 		$query = "INSERT INTO appointments (userId, dentistId, date, time, serviceType)
@@ -62,22 +66,42 @@
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container booked">
-		<h1>Your appointment has been confirmed!</h1>
-		<p>An email confirmation has been sent to your email.</p>
+	<div class="container acct-container">
+		<?php
+			if($is_reschedule) {
+				// appointment is rescheduled
+				echo "<h1>Your appointment has been rescheduled!</h1>";
+
+				// check if patient or dentist made the reschedule
+				if ($_SESSION['user_type'] == 1) {
+					// patient made the reschedule
+					echo "<p>An email confirmation has been sent to your email.<br>We will notify the respective dentist about the changes made.</p>";
+
+				} elseif ($_SESSION['user_type'] == 9) {
+					// dentist made the reschedule
+					echo "<p>An email has been sent to notify the paitent of the changes.</p>";
+					
+				}
+			} else {
+				// new appointment is  booked
+				echo "<h1>Your appointment has been rescheduled!</h1>";
+				echo "<p>An email confirmation has been sent to your email.</p>";
+			}
+		?>
+
 		<!-- appointment card to display appointment details -->
 		<div class="appt-card" <?php if(!$is_booked) echo 'style="display: none;"'; ?>>
 			<div style="width: 160px;" align="center">image here</div>
 			<div>
 				<p><?php echo $date; ?></p>
 				<p><?php echo $time; ?></p>
-				<p><?php echo $dentistId; ?></p>
+				<p><?php echo $name; ?></p>
 				<p><?php echo $service; ?></p>
 			</div>
 		</div>
 
 		<!-- buttons -->
-		<div>
+		<div id="cfm-page-btns">
 			<a href="dashboard.php" class="btn-outline">Back to my dashboard</a>
 			<a href="logout.php" class="btn-pri">Log out</a>
 		</div>

@@ -1,39 +1,76 @@
 <?php
-	// reschedule.php
-	// conncect to db
-	include "dbconnect.php";
-	session_start();
+// reschedule.php
+// conncect to db
+include "dbconnect.php";
+session_start();
 
-	// create short variable names
-	$apptId = $_GET['apptId'];
+// create short variable names
+$apptId = $_GET['apptId'];
 
-	// query formulation
-	$query = "SELECT * FROM appointments WHERE apptId=".$apptId;
+// query formulation
+$query = "SELECT * FROM appointments WHERE apptId=" . $apptId;
 
-	// query submission
-	$result = $dbcnx->query($query);
+// query submission
+$result = $dbcnx->query($query);
 
-	$oldAppt = array();
-	
-	// Fetch data and store it in the $appointment array
-	while ($row = $result->fetch_assoc()) {
-		$oldAppt[] = $row;
+$oldAppt = array();
+
+// Fetch data and store it in the $appointment array
+while ($row = $result->fetch_assoc()) {
+	$oldAppt[] = $row;
+}
+
+// create short variables names for $oldAppt array
+$userId = $oldAppt[0]['userId'];
+$dentistId = $oldAppt[0]['dentistId'];
+$date = $oldAppt[0]['date'];
+$time = $oldAppt[0]['time'];
+$service = $oldAppt[0]['serviceType'];
+
+// check if patient or dentist
+if ($_SESSION['user_type'] == 1) {
+	// display dentist's name in appt card
+	// get dentist name
+	switch ($dentistId) {
+		case 2001: 
+			$name = "Dr. Emily Pearson";
+			break;
+		case 2002: 
+			$name = "Dr. Carlos Novakowski";
+			break;
+		case 2003: 
+			$name = "Dr. Sarah Rodriguez";
+			break;
+		default:
+			$name = "Unknown Dentist...";	
 	}
 
-	// create short variables names for $oldAppt array
-	$dentistId = $oldAppt[0]['dentistId'];
-	$date = $oldAppt[0]['date'];
-	$time = $oldAppt[0]['time'];
-	$service = $oldAppt[0]['serviceType'];
+} elseif ($_SESSION['user_type'] == 9) {
+	// display patient's name in appt card
+	// get patient's name
 
-	// close data base connection
-	$dbcnx->close();
+	// query formulation 
+	$nameQuery = "SELECT name FROM users WHERE userId=".$userId;
+
+	// run query
+	$nameResult = $dbcnx->query($nameQuery);
+
+	// fetch name from database
+	$row = $nameResult->fetch_assoc();
+	$name = $row['name'];
+}
+
+// close data base connection
+$dbcnx->close();
 ?>
 <html lang="en">
 
 <head>
 	<title>Pearly Whites Dental</title>
 	<meta charset="utf-8">
+	
+	<!-- javascript -->
+	<script type="text/javascript" src="input_display.js"></script>
 
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
@@ -55,70 +92,94 @@
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container booked">
-		<h2>Current appointment</h2>
-		<?php echo var_dump($oldAppt); ?>
-		<!-- appointment card to display appointment details -->
-		<div class="appt-card">
-			<div style="width: 160px;" align="center">image here</div>
-			<div>
-				<p><?php echo $date; ?></p>
-				<p><?php echo $time; ?></p>
-				<p><?php echo $dentistId; ?></p>
-				<p><?php echo $service; ?></p>
-			</div>
-		</div>
-		
-		<!-- reschedule appt form -->
-		<form method="post" action="confirmation.php">
-			<div>
-				<p>Choose a new date & time</p>
-				<div class="row justify-content-center">
+	<div class="container acct-container">
+		<h1>Reschedule Appointment</h1>
+		<div class="row justify-content-center align-items-center">
+			<!-- current appointment column -->
+			<div class="col">
+				<h3>Current appointment</h3>
+				<!-- appointment card to display appointment details -->
+				<div class="appt-card">
+					<div style="width: 160px;" align="center">image here</div>
 					<div>
-						<input type="date" name="date" required>
+						<p><?php echo $date; ?></p>
+						<p><?php echo $time; ?></p>
+						<p><?php echo $name; ?></p>
+						<p><?php echo $service; ?></p>
 					</div>
-					<div class="col">
-						<div>
-							<input type="radio" name="time" value="0900">9.00 am
-							<input type="radio" name="time" value="1000">10.00 am
-							<input type="radio" name="time" value="1100">11.00 am
-						</div>
-						<div>
-							<input type="radio" name="time" value="1330">1.30 pm
-							<input type="radio" name="time" value="1430">2.30 pm
-							<input type="radio" name="time" value="1530">3.30 pm
-						</div>
-						<div>
-							<input type="radio" name="time" value="1630">4.30 pm
-							<input type="radio" name="time" value="1730">5.30 pm
-							<input type="radio" name="time" value="1830">6.30 pm
-						</div>
-					</div>
-					<!-- hidden input -->
-					<input type="text" name="reschedule" style="display: none;" value="<?php echo $apptId; ?>">
-					<input type="text" name="dentist" style="display: none;" value="<?php echo $dentistId; ?>">
-					<input type="text" name="serviceType" style="display: none;" value="<?php echo $service; ?>">
 				</div>
 			</div>
-			<input type="submit" class="btn-pri" value="Confirm booking">
-		</form>
 
-		<h2>New appointment</h2>
-		<!-- appointment card to display appointment details -->
-		<div class="appt-card">
-			<div style="width: 160px;" align="center">image here</div>
-			<div>
-				<p><?php echo 'new date'; ?></p>
-				<p><?php echo 'new time'; ?></p>
-				<p><?php echo $dentistId; ?></p>
-				<p><?php echo $service; ?></p>
+			<div class="col">
+				image here
 			</div>
-		</div>
 
-		<!-- buttons -->
-		<div>
-			<a href="dashboard.php" class="btn-outline">Back to my dashboard</a>
-			<a href="logout.php" class="btn-pri">Log out</a>
+			<!-- new appt column -->
+			<div class="col">
+				<h3>New appointment</h3>
+				<!-- appointment card to display appointment details -->
+				<div class="appt-card">
+					<div style="width: 160px;" align="center">image here</div>
+					<div>
+						<p id="displayDate">new date</p>
+						<p id="displayTime">new time</p>
+						<p><?php echo $name; ?></p>
+						<p><?php echo $service; ?></p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="row justify-content-center">
+			<!-- reschedule appt form -->
+			<form id="reschForm" method="post" action="confirmation.php">
+				<h2>Choose a new date & time</h2>
+				<div class="row justify-content-space-between">
+					<div>
+						<input type="date" name="date" id="newDate" required>
+						<!-- include js for min date selection -->
+					</div>
+					<div class="col">
+						<div class="time-row">
+							<input type="radio" name="time" class="radio" id="timeslot1" value="0900">
+							<label class="radio-label label-1 timeslot" for="timeslot1">9.00 AM</label>
+
+							<input type="radio" name="time" class="radio" id="timeslot2" value="1000">
+							<label class="radio-label label-2 timeslot" for="timeslot2">10.00 AM</label>
+
+							<input type="radio" name="time" class="radio" id="timeslot3" value="1100">
+							<label class="radio-label label-3 timeslot" for="timeslot3">11.00 AM</label>
+						</div>
+						<div class="time-row">
+							<input type="radio" name="time" class="radio" id="timeslot4" value="1330">
+							<label class="radio-label label-4 timeslot" for="timeslot4">1.30 PM</label>
+
+							<input type="radio" name="time" class="radio" id="timeslot5" value="1430">
+							<label class="radio-label label-5 timeslot" for="timeslot5">2.30 PM</label>
+
+							<input type="radio" name="time" class="radio" id="timeslot6" value="1530">
+							<label class="radio-label label-6 timeslot" for="timeslot6">3.30 PM</label>
+						</div>
+						<div class="time-row">
+							<input type="radio" name="time" class="radio" id="timeslot7" value="1630">
+							<label class="radio-label label-7 timeslot" for="timeslot7">4.30 PM</label>
+
+							<input type="radio" name="time" class="radio" id="timeslot8" value="1730">
+							<label class="radio-label label-8 timeslot" for="timeslot8">5.30 PM</label>
+
+							<input type="radio" name="time" class="radio" id="timeslot9" value="1830">
+							<label class="radio-label label-9 timeslot" for="timeslot9">6.30 PM</label>
+						</div>
+					</div>
+				</div>
+				<!-- hidden input -->
+				<input type="text" name="rescheduleID" style="display: none;" value="<?php echo $apptId; ?>">
+				<input type="text" name="dentist" style="display: none;" value="<?php echo $dentistId; ?>">
+				<input type="text" name="serviceType" style="display: none;" value="<?php echo $service; ?>">
+				<input type="text" name="nameDisplayed" style="display: none;" value="<?php echo $name; ?>">
+				<input type="submit" class="btn-pri" value="Reschedule">
+			</form>
 		</div>
 	</div>
 
