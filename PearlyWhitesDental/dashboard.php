@@ -105,7 +105,7 @@
 					</button>
 					<div class="dropdown-content">
 					  <a href="dashboard.php">My Appointments</a>
-					  <a href="index.html">Logout</a>
+					  <a href="logout.php">Logout</a>
 					</div>
 				</div> 
 			</div>

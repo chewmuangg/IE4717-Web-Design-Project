@@ -48,7 +48,15 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
-				<a href="dashboard.php"><img src="images/icon_account.png" width="32" height="32"></a>
+				<div class="dropdown">
+					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32"> 
+					  
+					</button>
+					<div class="dropdown-content">
+					  <a href="dashboard.php">My Appointments</a>
+					  <a href="logout.php">Logout</a>
+					</div>
+				</div> 
 			</div>
 		</nav>
 	</header>

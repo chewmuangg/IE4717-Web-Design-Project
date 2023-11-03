@@ -55,7 +55,15 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
-				<a href="dashboard.php"><img src="images/icon_account.png" width="32" height="32"></a>
+				<div class="dropdown">
+					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32"> 
+					  
+					</button>
+					<div class="dropdown-content">
+					  <a href="dashboard.php">My Appointments</a>
+					  <a href="logout.php">Logout</a>
+					</div>
+				</div> 
 			</div>
 		</nav>
 	</header>
@@ -100,6 +108,25 @@
 		<small><i>Copyright &copy; 2023 Pearly Whites Dental</i></small>
 	</footer>
 	<!-- end of footer -->
+
+<?php
+$to      = 'f31ee@localhost';
+$from = 'appointments@pearlywhites.com'; 
+$fromName = 'Pearly Whites Dental';
+$subject = 'Confirmation of appointment at Pearly Whites Dental';
+$dentistId = $_POST['dentist'];
+$date = "\n\nDate: " . $_POST['date'];
+$time = "\n\nTime: " . $_POST['time'];
+$service = "\n\nService: " . $_POST['serviceType'];
+$message = 'Here are the details of your appointment: ' . $service . $date . $time;
+$headers = 'From: '.$fromName.'<'.$from.'>' . "\r\n" .
+    'Reply-To: f31ee@localhost' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers,'-ff32ee@localhost');
+
+?> 
+
 </body>
 
 </html>
