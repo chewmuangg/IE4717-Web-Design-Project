@@ -100,6 +100,7 @@
 					<input type="text" name="serviceType" style="display: none;" value="<?php echo $service; ?>">
 				</div>
 			</div>
+			<br>
 			<input type="submit" class="btn-pri" value="Confirm booking">
 		</form>
 
@@ -114,7 +115,8 @@
 				<p><?php echo $service; ?></p>
 			</div>
 		</div>
-
+		<br>
+		<br>
 		<!-- buttons -->
 		<div>
 			<a href="dashboard.php" class="btn-outline">Back to my dashboard</a>

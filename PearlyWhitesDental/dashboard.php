@@ -98,7 +98,16 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
-				<a href="dashboard.php"><img src="images/icon_account.png" width="32" height="32"></a>
+				<!-- dropdown for appointment page & logout -->
+				<div class="dropdown">
+					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32"> 
+					  
+					</button>
+					<div class="dropdown-content">
+					  <a href="dashboard.php">My Appointments</a>
+					  <a href="index.html">Logout</a>
+					</div>
+				</div> 
 			</div>
 		</nav>
 	</header>
@@ -108,8 +117,7 @@
 	<div class="container booked">
 		<h1>Hello, <?php echo $_SESSION['valid_user'];?>!</h1>
 		<p>What would you like to do today?</p>
-		<!-- logout button -->
-		<a href="logout.php">Logout</a>
+		
 
 		<!-- appointment schedule -->
 

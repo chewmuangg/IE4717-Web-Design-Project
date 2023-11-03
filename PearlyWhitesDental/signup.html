@@ -7,6 +7,7 @@
 
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
+	<script type = "text/javascript" src = "scripts.js"></script>
 </head>
 
 <body>
@@ -32,29 +33,32 @@
 			<h2>Sign up for an account to book<br>your appointments easily!</h2>
 			<form method="post" action="register.php" id="loginForm">
 				<div>
-					<label for="name" class="form-row__one">Name:</label>
+					<label for="name">Name:</label>
 					<div class="form-col__two">
-						<input type="text" name="name" id="name" class="form-row__one" size="30" required placeholder="Enter your name here">
+						<input type="text" name="name" id="name" class="form-row__one" style="margin-left: -1px" size="30" required placeholder="Enter your name here">
+						<br>
 						<small id="name-error"></small>
 					</div>
 				</div>
 				<div>
 					<label for="email">Email:</label>
 					<div class="form-col__two">
-						<input name="email" id="email" size="30" required placeholder="Enter your email here">
+						<input name="email" id="email" class="form-row__one" style="margin-left: -1px" size="30" required placeholder="Enter your email here">
+						<br>
 						<small id="email-error"></small>
 					</div>
 				</div>
 				<div>
 					<label for="password">Password:</label>
 					<br>
-					<input type="password" name="password" id="password" size="30" required placeholder="Enter your password here">
+					<input type="password" name="password" id="password" class="form-row__one" style="margin-left: -1px" size="30" required placeholder="Enter your password here">
 				</div>
 				<div>
 					<label for="password">Confirm password:</label>
 					<br>
-					<input type="password" name="password2" id="password2" size="30" required placeholder="Enter your password again">
+					<input type="password" name="password2" id="password2" class="form-row__one" style="margin-left: -1px" size="30" required placeholder="Enter your password again">
 				</div>
+				<br>
 				<input class="btn-pri" id="btnSubmit" type="submit" value="Sign Up">
 			</form>
 		</div>

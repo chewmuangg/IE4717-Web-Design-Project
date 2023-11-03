@@ -74,6 +74,48 @@ header a {
 	color: white;
 }
 
+/* table styling */
+.table-container {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 90px auto 0px auto;
+}
+
+.table-img {
+	background-image: url(../images/tablebg.jpg);
+
+    width: 100%;
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.table-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: black;
+}
+
+tr, td {
+    border-style: solid;
+    border-color: #7aa6e1;
+  }
+
+tr:nth-child(odd) {
+    background-color: #b7daf4;
+  }
+
+
 /* page content styling */
 .main-container {
     width: 100%;
@@ -95,6 +137,7 @@ header a {
     display: flex;
     flex-direction: row;
 }
+
 
 .col {
     display: flex;
@@ -157,7 +200,7 @@ header a {
 /* footer styling */
 footer {
     width: 100%;
-    background-color: #FFB890;
+    background-color: #d7f7ff;
     color: black;
     text-align: center;
     padding: 40px 0px 24px 0px;
@@ -176,7 +219,7 @@ footer {
 }
 
 #rightcolumn {
-    margin-left: 700px;
+    margin-left: 600px;
     text-align: left;
    
 }
@@ -226,7 +269,7 @@ footer {
     align-items: center;
     padding: 24px 40px;
     margin-bottom: 16px;
-    background-color: peachpuff;
+    background-color: #b7daf4;
     border-radius: 8px;
 }
 
@@ -345,7 +388,7 @@ select {
     text-align: start;
     width: 400px;
     margin: auto;
-    background-color: blanchedalmond;
+    background-color: #b7daf4;
 }
 
 /* custom styles */
@@ -391,7 +434,7 @@ table {
     margin: auto;
    
     width: 600px;
-    border-spacing: 1;
+    
 }
 
 .table-col__one {
@@ -446,3 +489,47 @@ ol {
     list-style-image: url(../images/email.png);
     /* image from <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Freepik - Flaticon</a> */
 }
+
+/* dropdown style */
+.dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+.dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -60px;
+  }
+  
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+.dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+  }

@@ -75,7 +75,8 @@
 				<p><?php echo $service; ?></p>
 			</div>
 		</div>
-
+		<br>
+		<br>
 		<!-- buttons -->
 		<div>
 			<a href="dashboard.php" class="btn-outline">Back to my dashboard</a>
