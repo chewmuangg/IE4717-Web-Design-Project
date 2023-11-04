@@ -26,36 +26,41 @@
 
 	<!-- page content -->
 	<div class="login-container">
-		<div id="left-img"></div>
-		<div id="right-side">
+		<div id="login-left"></div>
+		<div id="login-right">
 			<h1>Welcome to Pearly Whites Dental</h1>
 			<h2>Log in to your Account</h2>
-			<form method="post" action="dashboard.php" id="loginForm">
-				<div>
-					<label>Log in as:</label>
-					<br>
-					<input type="radio" name="account" value="1" checked required> Patient
-					<input type="radio" name="account" value="9"> Dentist
-				</div>
-				<div>
-					<label for="email">Email:</label>
-					<div class="form-col__two">
-						<input name="email" id="email" size="30" required placeholder="Enter your email here">
-						<small id="email-error"></small>
-						<!-- add in js checking -->
+			<div class="col">
+				<form method="post" action="dashboard.php" id="loginForm">
+					<div>
+						<label>I am a:</label>
+						<div class="acct-radio-grp">
+							<input type="radio" name="account" class="radio" id="radio-acct1" value="1" checked required>
+							<label for="radio-acct1">Patient</label>
+
+							<input type="radio" name="account" class="radio" id="radio-acct9" value="9">
+							<label for="radio-acct9">Dentist</label>
+						</div>
 					</div>
-				</div>
-				<div>
-					<label for="password">Password:</label>
-					<br>
-					<input type="password" name="password" id="password" size="30" required placeholder="Enter your password here">
-				</div>
-				<br>
-				<input class="btn-pri" id="btnSubmit" type="submit" value="Log In">
-				<!-- backend check for valid user -->
-			</form>
-			<br>
-			<a href="signup.html" class="btn-outline btn-submit" style="margin-left: -77px">Create an Account</a>
+					<div>
+						<label for="email">Email:</label>
+						<div class="form-input">
+							<input name="email" id="email" size="30" required placeholder="Enter your email here">
+							<small id="email-error"></small>
+							<!-- add in js checking -->
+						</div>
+					</div>
+					<div>
+						<label for="password">Password:</label>
+						<br>
+						<input type="password" name="password" class="form-input" id="password" size="30" required placeholder="Enter your password here">
+					</div>
+					<input class="btn-pri" id="btnSubmit" type="submit" value="Log In">
+					<!-- backend check for valid user -->
+				</form>
+				<a href="signup.html" class="btn-outline btn-submit" id="btn-create">Create an Account</a>
+			</div>
+			
 		</div>
 	</div>
 

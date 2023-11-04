@@ -9,16 +9,94 @@
 	$date = $_POST['date'];
 	$time = $_POST['time'];
 	$service = $_POST['serviceType'];
+	
 	$is_booked = false;
+	$is_reschedule = false;
+
+	// query formulation
+	$apptQuery = "SELECT dentistId, date, time FROM appointments ORDER BY date, time";
+
+	// query submission
+	$apptResult = $dbcnx->query($apptQuery);
+
+	// initialise an all appts array to store results retrieved from db
+	$allAppts = array();
+
+	// Fetch data and store it in the $appointment array
+	while ($row = $apptResult->fetch_assoc()) {
+		$allAppts[] = $row;
+	}
+
+	$unavailTimeslots = array();
+
+    foreach($allAppts as $appt) {
+        if (($appt['dentistId'] == $dentistId) && ($appt['date'] == $date)) {
+            $unavailTimeslots[] = $appt['time'];
+        }
+    }
+
+	foreach($unavailTimeslots as $timeslots) {
+		if($timeslots == $time) {
+			$apptExists = true; 	// timeslot has already been booked, unavailable
+			break;	// exit the loop early since we found a match
+		}
+	}
+	
+	if ($apptExists) {
+		echo "<script>";
+		echo "alert('Oh no! It seems like the timeslot is unavailable. Please select another timeslot! Sorry for the inconvenience caused!');";
+		echo "window.location.href = 'appointment.html';"; // Redirect to appointment.html
+		echo "</script>";
+	
+		exit;
+	}
 
 	// check if reschedule or new appt
-	if (isset($_POST['reschedule'])) {
+	if (isset($_POST['rescheduleID'])) {
 		// appointment ID variable
-		$apptId = $_POST['reschedule'];
+		$apptId = $_POST['rescheduleID'];
+		$name = $_POST['nameDisplayed'];
+		$is_reschedule = true;
 		
 		// query formulation
 		$query = "UPDATE appointments SET date='".$date."', time='".$time."' WHERE apptId=".$apptId;
+
 	} else {
+		// a new appt is booked
+		
+		// check if patient or dentist
+		if ($_SESSION['user_type'] == 1) {
+			// is a patient acc, display dentist's name in appt card
+			// get dentist name
+			switch ($dentistId) {
+				case 2001: 
+					$name = "Dr. Emily Pearson";
+					break;
+				case 2002: 
+					$name = "Dr. Carlos Novakowski";
+					break;
+				case 2003: 
+					$name = "Dr. Sarah Rodriguez";
+					break;
+				default:
+					$name = "Unknown Dentist...";	
+			}
+
+		} elseif ($_SESSION['user_type'] == 9) {
+			// is a dentist / admin acc, display patient's name in appt card
+			// get patient's name
+
+			// query formulation 
+			$nameQuery = "SELECT name FROM users WHERE userId=".$userId;
+
+			// run query
+			$nameResult = $dbcnx->query($nameQuery);
+
+			// fetch name from database
+			$row = $nameResult->fetch_assoc();
+			$name = $row['name'];
+		}
+
 		// query formulation
 		$query = "INSERT INTO appointments (userId, dentistId, date, time, serviceType)
 				VALUES (".$_SESSION['user_id'].", ".$dentistId.", '".$date."', '".$time."', '".$service."')";
@@ -70,23 +148,43 @@
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container booked">
-		<h1>Your appointment has been confirmed!</h1>
-		<p>An email confirmation has been sent to your email.</p>
+	<div class="container acct-container">
+		<?php
+			if($is_reschedule) {
+				// appointment is rescheduled
+				echo "<h1>Your appointment has been rescheduled!</h1>";
+
+				// check if patient or dentist made the reschedule
+				if ($_SESSION['user_type'] == 1) {
+					// patient made the reschedule
+					echo "<p>An email confirmation has been sent to your email.<br>We will notify the respective dentist about the changes made.</p>";
+
+				} elseif ($_SESSION['user_type'] == 9) {
+					// dentist made the reschedule
+					echo "<p>An email has been sent to notify the paitent of the changes.</p>";
+					
+				}
+			} else {
+				// new appointment is  booked
+				echo "<h1>Your appointment has been confirmed!</h1>";
+				echo "<p>An email confirmation has been sent to your email.</p>";
+			}
+		?>
+
 		<!-- appointment card to display appointment details -->
 		<div class="appt-card" <?php if(!$is_booked) echo 'style="display: none;"'; ?>>
 			<div style="width: 160px;" align="center">image here</div>
 			<div>
 				<p><?php echo $date; ?></p>
 				<p><?php echo $time; ?></p>
-				<p><?php echo $dentistId; ?></p>
+				<p><?php echo $name; ?></p>
 				<p><?php echo $service; ?></p>
 			</div>
 		</div>
 		<br>
 		<br>
 		<!-- buttons -->
-		<div>
+		<div id="cfm-page-btns">
 			<a href="dashboard.php" class="btn-outline">Back to my dashboard</a>
 			<a href="logout.php" class="btn-pri">Log out</a>
 		</div>

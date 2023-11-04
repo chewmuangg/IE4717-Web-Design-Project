@@ -172,6 +172,7 @@ tr:nth-child(odd) {
     min-width: 1280px;
     display: flex;
     margin: 90px auto 0px auto;
+    padding: 64px;
 }
 
 .row {
@@ -235,7 +236,7 @@ tr:nth-child(odd) {
 
 /* form submit buttons */
 .btn-submit {
-    background-color: white;
+    background-color: transparent;
 }
 
 /* footer styling */
@@ -279,7 +280,7 @@ footer {
     margin: auto;
 }
 
-#left-img {
+#login-left {
     width: 50%;
     height: 800px;
     background-image: url(../images/sample.jpg);
@@ -288,7 +289,7 @@ footer {
 	background-size: cover;
 }
 
-#right-side {
+#login-right {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -297,7 +298,61 @@ footer {
     margin: auto;
 }
 
+
+.acct-radio-grp {
+    width: fit-content;
+    border: 1px solid #666;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 8px 0px 16px;
+}
+
+.acct-radio-grp label {
+    width: 112px;
+    padding: 10px 16px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.acct-radio-grp label:last-of-type {
+    border-right: 0;
+}
+
+.acct-radio-grp label:hover {
+    background: #eee;
+}
+
+.acct-radio-grp input:checked + label {
+    background: #becbff;
+}
+
+.form-input {
+    margin: 8px 0px 16px;
+}
+
+#loginForm #btnSubmit {
+    width: 100%;
+    margin-top: 16px;
+}
+
+#btn-create {
+    width: 242px;
+    margin-top: 16px;
+    text-align: center;
+}
+
 /* dashboard page styling*/
+.acct-container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
 .dashboard {
 	padding: 40px 64px;
 }
@@ -324,8 +379,7 @@ footer {
 .appt {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 40px 64px;
-	/*min-height: 540px;*/
+	background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
 #appt-form {
@@ -338,6 +392,11 @@ footer {
     justify-content: flex-start;
 	align-items: center;
 	margin: auto;
+    padding: 0px 64px;
+    background-color: whitesmoke;
+    border-radius: 24px;
+    border: 2px solid rgba(24, 24, 35, 0.1);
+    box-shadow: rgba(24, 24, 35, 0.2) 0px 5px 15px;
 }
 
 .appt-form-row1 {
@@ -399,11 +458,15 @@ footer {
     width: 100px;
 }
 
+#timeslot-col {
+    display: none;
+}
+
 .time-row {
     margin-bottom: 16px;
 }
 
-#date {
+#date, #newDate {
     width: 200px;
     font-size: 16px;
 }
@@ -413,12 +476,9 @@ select {
     font-size: 16px;
 }
 
-/* appt booked page styling */
-.booked {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 64px;
+/* reschedule appt page styling */
+#reschForm {
+    width: 800px;
 }
 
 .appt-card {
@@ -430,6 +490,15 @@ select {
     width: 400px;
     margin: auto;
     background-color: #b7daf4;
+}
+
+/* Confirmation Page Styling */
+#cfm-page-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
 }
 
 /* custom styles */
