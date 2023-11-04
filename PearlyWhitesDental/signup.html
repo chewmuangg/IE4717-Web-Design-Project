@@ -19,7 +19,7 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
-				<a href="login.html" class="btn-pri" style="color: white;">Log In</a>
+				<a href="login.html" class="btn-pri btn-login" style="color: white;">Log In</a>
 			</div>
 		</nav>
 	</header>
@@ -31,34 +31,37 @@
 		<div id="login-right">
 			<h1>Welcome to Pearly Whites Dental</h1>
 			<h2>Create an Account</h2>
-			<form method="post" action="register.php" id="loginForm">
-				<div>
-					<label for="name" class="">Name:</label>
-					<div class="form-col__two">
-						<input type="text" name="name" id="name" class="form-input" size="30" required placeholder="Enter your name here">
-						<small id="name-error"></small>
+			<div class="col">
+				<form method="post" action="register.php" id="loginForm">
+					<div>
+						<label for="name" class="">Name:</label>
+						<div class="form-col__two">
+							<input type="text" name="name" id="name" class="form-input" size="30" required placeholder="Enter your name here">
+							<small id="name-error"></small>
+						</div>
 					</div>
-				</div>
-				<div>
-					<label for="email">Email:</label>
-					<div class="form-col__two">
-						<input name="email" class="form-input" id="email" size="30" required placeholder="Enter your email here">
-						<small id="email-error"></small>
+					<div>
+						<label for="email">Email:</label>
+						<div class="form-col__two">
+							<input name="email" class="form-input" id="email" size="30" required placeholder="Enter your email here">
+							<small id="email-error"></small>
+						</div>
 					</div>
-				</div>
-				<div>
-					<label for="password">Password:</label>
+					<div>
+						<label for="password">Password:</label>
+						<br>
+						<input type="password" name="password" class="form-input" id="password" size="30" required placeholder="Enter your password here">
+					</div>
+					<div>
+						<label for="password">Confirm password:</label>
+						<br>
+						<input type="password" name="password2" class="form-input" id="password2" size="30" required placeholder="Enter your password again">
+					</div>
 					<br>
-					<input type="password" name="password" class="form-input" id="password" size="30" required placeholder="Enter your password here">
-				</div>
-				<div>
-					<label for="password">Confirm password:</label>
-					<br>
-					<input type="password" name="password2" class="form-input" id="password2" size="30" required placeholder="Enter your password again">
-				</div>
-				<br>
-				<input class="btn-pri" id="btnSubmit" type="submit" value="Sign Up">
-			</form>
+					<input class="btn-pri" id="btnSubmit" type="submit" value="Sign Up">
+				</form>
+				<!-- <a href="login.html" class="btn-outline btn-submit" id="btn-create">Back to Login Page</a> -->
+			</div>
 		</div>
 	</div>
 

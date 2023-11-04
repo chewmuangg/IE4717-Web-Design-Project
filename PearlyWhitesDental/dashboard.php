@@ -120,14 +120,16 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
+
 				<!-- dropdown for appointment page & logout -->
 				<div class="dropdown">
-					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32"> 
-					  
+					<button class="dropbtn">
+						<img src="images/icon_account.png" width="32" height="32"> 
 					</button>
 					<div class="dropdown-content">
-					  <a href="dashboard.php">My Appointments</a>
-					  <a href="logout.php">Logout</a>
+						<a href="dashboard.php">My Appointments</a>
+						<!-- logout button -->
+						<a href="logout.php">Logout</a>
 					</div>
 				</div> 
 			</div>
@@ -144,12 +146,8 @@
 		
 		<!-- show text for dentists accs, hide for patients accs -->
 		<p <?php if($_SESSION['user_type'] == 1) echo 'style="display: none;"'; ?>>It's a beautiful day to save smiles :&rpar;</p>
-		
-		<!-- logout button -->
-		<a href="logout.php">Logout</a>
 
 		<!-- appointment schedule -->
-
 		<div class="dashboard">
             <div class="col">
                 <div class="row justify-content-space-between align-items-center">
@@ -162,7 +160,7 @@
 
 					<!-- show button for patients accs, hide for dentists accs -->
                     <!-- <a class="btn-pri" href="appointment.html" <?php if($_SESSION['user_type'] == 9) echo 'style="display: none;"'; ?>>Book an Appointment</a> -->
-                    <a class="btn-pri" href="appointment.html" >Book an Appointment</a>
+                    <a class="btn-pri btn-book" href="appointment.html" >Book an Appointment</a>
                 </div>
 
 				<!-- start of an appointment card --> 

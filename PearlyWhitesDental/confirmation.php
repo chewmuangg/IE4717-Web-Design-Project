@@ -1,118 +1,116 @@
 <?php
-	// confirmation.php
-	// conncect to db
-	include "dbconnect.php";
-	session_start();
+// confirmation.php
+// conncect to db
+include "dbconnect.php";
+session_start();
 
-	// create short variable names
-	$dentistId = $_POST['dentist'];
-	$date = $_POST['date'];
-	$time = $_POST['time'];
-	$service = $_POST['serviceType'];
-	
-	$is_booked = false;
-	$is_reschedule = false;
+// create short variable names
+$dentistId = $_POST['dentist'];
+$date = $_POST['date'];
+$time = $_POST['time'];
+$service = $_POST['serviceType'];
+
+$is_booked = false;
+$is_reschedule = false;
+
+// query formulation
+$apptQuery = "SELECT dentistId, date, time FROM appointments ORDER BY date, time";
+
+// query submission
+$apptResult = $dbcnx->query($apptQuery);
+
+// initialise an all appts array to store results retrieved from db
+$allAppts = array();
+
+// Fetch data and store it in the $appointment array
+while ($row = $apptResult->fetch_assoc()) {
+	$allAppts[] = $row;
+}
+
+$unavailTimeslots = array();
+
+foreach ($allAppts as $appt) {
+	if (($appt['dentistId'] == $dentistId) && ($appt['date'] == $date)) {
+		$unavailTimeslots[] = $appt['time'];
+	}
+}
+
+foreach ($unavailTimeslots as $timeslots) {
+	if ($timeslots == $time) {
+		$apptExists = true; 	// timeslot has already been booked, unavailable
+		break;	// exit the loop early since we found a match
+	}
+}
+
+if ($apptExists) {
+	echo "<script>";
+	echo "alert('Oh no! It seems like the timeslot is unavailable. Please select another timeslot! Sorry for the inconvenience caused!');";
+	echo "window.location.href = 'appointment.html';"; // Redirect to appointment.html
+	echo "</script>";
+
+	exit;
+}
+
+// check if reschedule or new appt
+if (isset($_POST['rescheduleID'])) {
+	// appointment ID variable
+	$apptId = $_POST['rescheduleID'];
+	$name = $_POST['nameDisplayed'];
+	$is_reschedule = true;
 
 	// query formulation
-	$apptQuery = "SELECT dentistId, date, time FROM appointments ORDER BY date, time";
+	$query = "UPDATE appointments SET date='" . $date . "', time='" . $time . "' WHERE apptId=" . $apptId;
+} else {
+	// a new appt is booked
 
-	// query submission
-	$apptResult = $dbcnx->query($apptQuery);
-
-	// initialise an all appts array to store results retrieved from db
-	$allAppts = array();
-
-	// Fetch data and store it in the $appointment array
-	while ($row = $apptResult->fetch_assoc()) {
-		$allAppts[] = $row;
-	}
-
-	$unavailTimeslots = array();
-
-    foreach($allAppts as $appt) {
-        if (($appt['dentistId'] == $dentistId) && ($appt['date'] == $date)) {
-            $unavailTimeslots[] = $appt['time'];
-        }
-    }
-
-	foreach($unavailTimeslots as $timeslots) {
-		if($timeslots == $time) {
-			$apptExists = true; 	// timeslot has already been booked, unavailable
-			break;	// exit the loop early since we found a match
+	// check if patient or dentist
+	if ($_SESSION['user_type'] == 1) {
+		// is a patient acc, display dentist's name in appt card
+		// get dentist name
+		switch ($dentistId) {
+			case 2001:
+				$name = "Dr. Emily Pearson";
+				break;
+			case 2002:
+				$name = "Dr. Carlos Novakowski";
+				break;
+			case 2003:
+				$name = "Dr. Sarah Rodriguez";
+				break;
+			default:
+				$name = "Unknown Dentist...";
 		}
-	}
-	
-	if ($apptExists) {
-		echo "<script>";
-		echo "alert('Oh no! It seems like the timeslot is unavailable. Please select another timeslot! Sorry for the inconvenience caused!');";
-		echo "window.location.href = 'appointment.html';"; // Redirect to appointment.html
-		echo "</script>";
-	
-		exit;
-	}
+	} elseif ($_SESSION['user_type'] == 9) {
+		// is a dentist / admin acc, display patient's name in appt card
+		// get patient's name
 
-	// check if reschedule or new appt
-	if (isset($_POST['rescheduleID'])) {
-		// appointment ID variable
-		$apptId = $_POST['rescheduleID'];
-		$name = $_POST['nameDisplayed'];
-		$is_reschedule = true;
-		
-		// query formulation
-		$query = "UPDATE appointments SET date='".$date."', time='".$time."' WHERE apptId=".$apptId;
+		// query formulation 
+		$nameQuery = "SELECT name FROM users WHERE userId=" . $userId;
 
-	} else {
-		// a new appt is booked
-		
-		// check if patient or dentist
-		if ($_SESSION['user_type'] == 1) {
-			// is a patient acc, display dentist's name in appt card
-			// get dentist name
-			switch ($dentistId) {
-				case 2001: 
-					$name = "Dr. Emily Pearson";
-					break;
-				case 2002: 
-					$name = "Dr. Carlos Novakowski";
-					break;
-				case 2003: 
-					$name = "Dr. Sarah Rodriguez";
-					break;
-				default:
-					$name = "Unknown Dentist...";	
-			}
+		// run query
+		$nameResult = $dbcnx->query($nameQuery);
 
-		} elseif ($_SESSION['user_type'] == 9) {
-			// is a dentist / admin acc, display patient's name in appt card
-			// get patient's name
-
-			// query formulation 
-			$nameQuery = "SELECT name FROM users WHERE userId=".$userId;
-
-			// run query
-			$nameResult = $dbcnx->query($nameQuery);
-
-			// fetch name from database
-			$row = $nameResult->fetch_assoc();
-			$name = $row['name'];
-		}
-
-		// query formulation
-		$query = "INSERT INTO appointments (userId, dentistId, date, time, serviceType)
-				VALUES (".$_SESSION['user_id'].", ".$dentistId.", '".$date."', '".$time."', '".$service."')";
+		// fetch name from database
+		$row = $nameResult->fetch_assoc();
+		$name = $row['name'];
 	}
 
-	// query submission
-	$result = $dbcnx->query($query);
+	// query formulation
+	$query = "INSERT INTO appointments (userId, dentistId, date, time, serviceType)
+				VALUES (" . $_SESSION['user_id'] . ", " . $dentistId . ", '" . $date . "', '" . $time . "', '" . $service . "')";
+}
 
-	if (!$result) {
-		echo "Your query failed.";
-	} else {
-		$is_booked = true;
-	}
+// query submission
+$result = $dbcnx->query($query);
 
-	// close data base connection
-	$dbcnx->close();
+if (!$result) {
+	echo "Your query failed.";
+} else {
+	$is_booked = true;
+}
+
+// close data base connection
+$dbcnx->close();
 ?>
 <html lang="en">
 
@@ -134,14 +132,14 @@
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
 				<div class="dropdown">
-					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32"> 
-					  
+					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32">
+
 					</button>
 					<div class="dropdown-content">
-					  <a href="dashboard.php">My Appointments</a>
-					  <a href="logout.php">Logout</a>
+						<a href="dashboard.php">My Appointments</a>
+						<a href="logout.php">Logout</a>
 					</div>
-				</div> 
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -150,30 +148,30 @@
 	<!-- page content -->
 	<div class="container acct-container">
 		<?php
-			if($is_reschedule) {
-				// appointment is rescheduled
-				echo "<h1>Your appointment has been rescheduled!</h1>";
+		if ($is_reschedule) {
+			// appointment is rescheduled
+			echo "<h1>Your appointment has been rescheduled!</h1>";
 
-				// check if patient or dentist made the reschedule
-				if ($_SESSION['user_type'] == 1) {
-					// patient made the reschedule
-					echo "<p>An email confirmation has been sent to your email.<br>We will notify the respective dentist about the changes made.</p>";
-
-				} elseif ($_SESSION['user_type'] == 9) {
-					// dentist made the reschedule
-					echo "<p>An email has been sent to notify the paitent of the changes.</p>";
-					
-				}
-			} else {
-				// new appointment is  booked
-				echo "<h1>Your appointment has been confirmed!</h1>";
-				echo "<p>An email confirmation has been sent to your email.</p>";
+			// check if patient or dentist made the reschedule
+			if ($_SESSION['user_type'] == 1) {
+				// patient made the reschedule
+				echo "<p>An email confirmation has been sent to your email.<br>We will notify the respective dentist about the changes made.</p>";
+			} elseif ($_SESSION['user_type'] == 9) {
+				// dentist made the reschedule
+				echo "<p>An email has been sent to notify the paitent of the changes.</p>";
 			}
+		} else {
+			// new appointment is  booked
+			echo "<h1>Your appointment has been confirmed!</h1>";
+			echo "<p>An email confirmation has been sent to your email.</p>";
+		}
 		?>
 
 		<!-- appointment card to display appointment details -->
-		<div class="appt-card" <?php if(!$is_booked) echo 'style="display: none;"'; ?>>
-			<div style="width: 160px;" align="center">image here</div>
+		<div class="appt-card" <?php if (!$is_booked) echo 'style="display: none;"'; ?>>
+			<div style="width: 160px;" align="center">
+				<img src="images/icon_event.png" width="112" height="112">
+			</div>
 			<div>
 				<p><?php echo $date; ?></p>
 				<p><?php echo $time; ?></p>
@@ -207,23 +205,23 @@
 	</footer>
 	<!-- end of footer -->
 
-<?php
-$to      = 'f31ee@localhost';
-$from = 'appointments@pearlywhites.com'; 
-$fromName = 'Pearly Whites Dental';
-$subject = 'Confirmation of appointment at Pearly Whites Dental';
-$dentistId = $_POST['dentist'];
-$date = "\n\nDate: " . $_POST['date'];
-$time = "\n\nTime: " . $_POST['time'];
-$service = "\n\nService: " . $_POST['serviceType'];
-$message = 'Here are the details of your appointment: ' . $service . $date . $time;
-$headers = 'From: '.$fromName.'<'.$from.'>' . "\r\n" .
-    'Reply-To: f31ee@localhost' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+	<?php
+		$to = 'f31ee@localhost';
+		$from = 'appointments@pearlywhites.com';
+		$fromName = 'Pearly Whites Dental';
+		$subject = 'Confirmation of appointment at Pearly Whites Dental';
+		$dentistId = $_POST['dentist'];
+		$date = "\n\nDate: " . $_POST['date'];
+		$time = "\n\nTime: " . $_POST['time'];
+		$service = "\n\nService: " . $_POST['serviceType'];
+		$message = 'Here are the details of your appointment: ' . $service . $date . $time;
+		$headers = 'From: ' . $fromName . '<' . $from . '>' . "\r\n" .
+			'Reply-To: f31ee@localhost' . "\r\n" .
+			'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers,'-ff32ee@localhost');
+		mail($to, $subject, $message, $headers, '-ff32ee@localhost');
 
-?> 
+	?>
 
 </body>
 

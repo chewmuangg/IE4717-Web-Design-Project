@@ -102,13 +102,12 @@ $dbcnx->close();
 	<!-- page content -->
 	<div class="container acct-container">
 		<h1>Reschedule Appointment</h1>
-		<div class="row justify-content-center align-items-center">
+		<div id="resch-cards-row">
 			<!-- current appointment column -->
 			<div class="col">
-				<h3>Current appointment</h3>
 				<!-- appointment card to display appointment details -->
-				<div class="appt-card">
-					<div style="width: 160px;" align="center">image here</div>
+				<div class="resch-card">
+					<h3>Current appointment</h3>
 					<div>
 						<p><?php echo $date; ?></p>
 						<p><?php echo $time; ?></p>
@@ -118,16 +117,13 @@ $dbcnx->close();
 				</div>
 			</div>
 
-			<div class="col">
-				image here
-			</div>
+			<img src="images/icon_double-arrow-right.png" width="80" height="80">
 
 			<!-- new appt column -->
 			<div class="col">
-				<h3>New appointment</h3>
 				<!-- appointment card to display appointment details -->
-				<div class="appt-card">
-					<div style="width: 160px;" align="center">image here</div>
+				<div class="resch-card">
+					<h3>New appointment</h3>
 					<div>
 						<p id="displayDate">new date</p>
 						<p id="displayTime">new time</p>
@@ -187,7 +183,11 @@ $dbcnx->close();
 				<input type="text" name="dentist" style="display: none;" value="<?php echo $dentistId; ?>">
 				<input type="text" name="serviceType" style="display: none;" value="<?php echo $service; ?>">
 				<input type="text" name="nameDisplayed" style="display: none;" value="<?php echo $name; ?>">
-				<input type="submit" class="btn-pri" value="Reschedule">
+				
+				<!-- form submit button --> 
+				<div class="appt-form-submit">
+					<input type="submit" class="btn-outline btn-submit" value="Reschedule">
+				</div>
 			</form>
 		</div>
 	</div>
