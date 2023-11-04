@@ -19,7 +19,7 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
-				<a href="login.html" class="btn-pri" style="color: white;">Log In</a>
+				<a href="login.html" class="btn-pri btn-login" style="color: white;">Log In</a>
 			</div>
 		</nav>
 	</header>
@@ -27,8 +27,8 @@
 
 	<div class="main-container">
 		<!-- banner image -->
-		<div class="banner-img">
-			<div class="banner-content">
+		<div class="contact-img">
+			<div class="contact-content">
 				<h1 class="homename">Contact Us</h1>
 				
 			</div>

@@ -80,7 +80,7 @@ header a {
 
 .dentists-img {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-	url(../images/ourdentists.jpg);
+	url(../images/dentists.jpg);
 
     width: 100%;
 	height: 600px;
@@ -151,10 +151,26 @@ header a {
 	color: black;
 }
 
+table {
+    margin: auto;
+    width: 600px;
+    border-radius: 10px;
+    border: 3px solid rgba(24, 24, 35, 0.1);
+    box-shadow: rgba(24, 24, 35, 0.2) 0px 5px 15px;
+}
+
+
+
 tr, td {
-    border-style: solid;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+   
     border-color: #7aa6e1;
   }
+
+table td:last-child {
+    border-right: none;
+}
 
 tr:nth-child(odd) {
     background-color: #b7daf4;
@@ -630,12 +646,7 @@ select {
 	margin-top: 12px;
 }
 
-table {
-    margin: auto;
-   
-    width: 600px;
-    
-}
+
 
 .table-col__one {
     text-align: center;

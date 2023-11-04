@@ -1,4 +1,4 @@
-var validEmail, validName
+var validEmail, validName, validNum;
 
 function formChecker(){
 	
@@ -10,16 +10,18 @@ function formChecker(){
 		return true;
 	}
 	else if (name.length < 3){
-		alert("Name must have at least 3 characters.");
-		
+		alert("Name must have at least 3 characters.");		
 		return false;
-	} else if (!(name.length > 0 && validName == 0)){
+	} 
+	else if (!(name.length > 0 && validName == 0)){
 		alert("Name can only contain alphabets and spaces.")
 		return false;
-	} else if (validEmail != 0){
+	} 
+	else if (validEmail != 0){
 		alert("Invalid email.");
 		return false;
-	} else if(message.length > 300){
+	} 
+	else if(message.length > 300){
 		alert("Cannot exceed 300 word characters.");
 		return false;
 	}
@@ -106,7 +108,30 @@ function msgChecker(){
 
 }
 
+function numChecker() {
+	var number = document.getElementById("number").value;
+	var text;
+  
+	if (/^[89]/.test(number)) {
+	  // Check if the input starts with 8 or 9 and has exactly 8 digits
+	  document.getElementById("num-error").innerHTML = "";
+	} else {
+	  text = "Contact Number must start with 8 or 9.";
+	  document.getElementById("num-error").innerHTML = text;
+	}
 
+	if (/^[89]/.test(number) && number.length > 8) {
+	  text = "Contact Number can only have 8 digits.";
+	  document.getElementById("num-error").innerHTML = text;
+	} 
+	else if (/^[89]/.test(number) && number.length < 8) {
+	  text = "Contact Number must have 8 digits.";
+      document.getElementById("num-error").innerHTML = text;
+	} else if (/^[89]/.test(number) && number.length == 8) {
+	document.getElementById("num-error").innerHTML = "";
+	}
+  }
+  
 
   
   function rform1(){
@@ -127,7 +152,10 @@ function init(){
 		name.onkeyup = nameChecker;
 	}
 
-	
+	if(document &&document.getElementById) {
+		var number = document.getElementById("number");
+		number.onkeyup = numChecker;
+	}
 
 	if(document &&document.getElementById) {
 		var message = document.getElementById("message");
