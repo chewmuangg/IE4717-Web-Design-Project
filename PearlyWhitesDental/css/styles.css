@@ -650,8 +650,8 @@ select {
 .col-dentist {
 	display: flex;
 	flex-direction: column;
-	width: 300px;
-	margin: 60px;
+	width: 360px;
+	margin: 40px;
 }
 
 .dentist-subtitle {
