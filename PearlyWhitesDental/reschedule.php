@@ -100,9 +100,9 @@ $dbcnx->close();
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container acct-container">
+	<div class="container acct-container" style="color: white">
 		<h1>Reschedule Appointment</h1>
-		<div id="resch-cards-row">
+		<div id="resch-cards-row" style="color: black">
 			<!-- current appointment column -->
 			<div class="col">
 				<!-- appointment card to display appointment details -->

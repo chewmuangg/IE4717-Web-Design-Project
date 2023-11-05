@@ -138,7 +138,7 @@
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container acct-container">
+	<div class="container acct-container" style="color:white">
 		<h1>Hello, <?php echo $_SESSION['valid_user'];?>!</h1>
 		
 		<!-- show text for patients accs, hide for dentists accs -->
@@ -148,7 +148,7 @@
 		<p <?php if($_SESSION['user_type'] == 1) echo 'style="display: none;"'; ?>>It's a beautiful day to save smiles :&rpar;</p>
 
 		<!-- appointment schedule -->
-		<div class="dashboard">
+		<div class="dashboard" style="color:black">
             <div class="col">
                 <div class="row justify-content-space-between align-items-center">
 

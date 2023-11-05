@@ -170,10 +170,17 @@ tr, td {
 
 table td:last-child {
     border-right: none;
+    
+    
+}
+
+table tr:last-child td{
+    border-bottom: none;   
 }
 
 tr:nth-child(odd) {
     background-color: #b7daf4;
+    
   }
 
 
@@ -295,6 +302,7 @@ footer {
     padding: 64px 0px 24px 0px;
     margin: auto;
     border-top: 1px solid rgba(24, 24, 35, 0.1);
+    
 }
 
 hr {
@@ -415,9 +423,12 @@ hr {
 
 /* dashboard page styling*/
 .acct-container {
+    height: auto;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+	url(../images/appointment.jpg);
 }
 
 .dashboard {
@@ -439,7 +450,7 @@ hr {
 }
 
 .no-schdl-card {
-    background-color: peachpuff;
+    background-color: #A5D3F0;
     padding: 16px 40px;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
@@ -449,8 +460,8 @@ hr {
 .appt {
     flex-direction: column;
     justify-content: flex-start;
-	background-image: linear-gradient(to right bottom, #a5d3f0, #addaf3, #b6e1f5, #bfe7f8, #c9eefb, #cbeefb, #cceffa, #ceeffa, #c8e9f6, #c2e3f3, #bddcef, #b8d6eb);
-}
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+	url(../images/appointment.jpg);}
 
 #appt-form {
     width: 800px;
@@ -638,15 +649,38 @@ select {
 .col-dentist {
 	display: flex;
 	flex-direction: column;
-	width: 300px;
-	margin: 100px;
+	width: 400px;
+	margin: 90px;
 }
 
 .dentist-subtitle {
 	margin-top: 12px;
 }
 
-
+/* dentist page collapsible*/
+.collapsible {
+    background-color: white;
+    color: #0069d9;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+}
+  
+.active, .collapsible:hover {
+    background-color: #b7daf4;
+}
+  
+.collapsecontent {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #e2ebf5;
+}
 
 .table-col__one {
     text-align: center;

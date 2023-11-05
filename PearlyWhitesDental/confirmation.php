@@ -146,7 +146,7 @@ $dbcnx->close();
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container acct-container">
+	<div class="container acct-container" style="color: white">
 		<?php
 		if ($is_reschedule) {
 			// appointment is rescheduled
@@ -168,7 +168,7 @@ $dbcnx->close();
 		?>
 
 		<!-- appointment card to display appointment details -->
-		<div class="appt-card" <?php if (!$is_booked) echo 'style="display: none;"'; ?>>
+		<div class="appt-card" style="color: black"<?php if (!$is_booked) echo 'style="display: none;"'; ?>>
 			<div style="width: 160px;" align="center">
 				<img src="images/icon_event.png" width="112" height="112">
 			</div>
