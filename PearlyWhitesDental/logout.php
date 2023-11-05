@@ -8,5 +8,5 @@
   session_destroy();
 
   // Redirect back to the page after updating
-  header("Location: index.html");
+  header("Location: index.php");
 ?>

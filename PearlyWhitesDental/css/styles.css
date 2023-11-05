@@ -121,21 +121,17 @@ header a {
 
 /* table styling */
 .table-container {
-
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 90px auto 0px auto;
 }
 
 .table-img {
-	background-image: url(../images/tablebg.jpg);
-
+	background-image: url(../images/home-table-bg.jpg);
     width: 100%;
-
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -151,27 +147,27 @@ header a {
 	color: black;
 }
 
+.table-content h1 {
+    margin-top: 30px;
+}
+
 table {
-    margin: auto;
-    width: 600px;
+    margin: 24px auto;
+    width: 800px;
     border-radius: 10px;
     border: 3px solid rgba(24, 24, 35, 0.1);
     box-shadow: rgba(24, 24, 35, 0.2) 0px 5px 15px;
 }
-
-
 
 tr, td {
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
    
     border-color: #7aa6e1;
-  }
+}
 
 table td:last-child {
     border-right: none;
-    
-    
 }
 
 table tr:last-child td{
@@ -180,9 +176,22 @@ table tr:last-child td{
 
 tr:nth-child(odd) {
     background-color: #b7daf4;
-    
-  }
+}
 
+/* home page last section */
+#cta-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #FFF7E9;
+    padding: 60px 0px;
+}
+
+.btn-cta {
+    margin: 24px;
+}
 
 /* page content styling */
 .main-container {
@@ -263,6 +272,11 @@ tr:nth-child(odd) {
     color: white;
 }
 
+.btn-cancel:hover {
+    background-color: red;
+    color: white;
+}
+
 /* header login btn*/
 .btn-login {
     padding: 8px 16px;
@@ -326,12 +340,6 @@ hr {
     margin-left: 600px;
     text-align: left;
    
-}
-
-#location-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 }
 
 /* login page styling*/
@@ -424,7 +432,7 @@ hr {
 #email,
 #password,
 #password2,
-#contactnumber,
+#number,
 #message {
     font-size: 16px;
     padding: 2px 4px;
@@ -506,8 +514,8 @@ hr {
 .appt {
     flex-direction: column;
     justify-content: flex-start;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-	url(../images/appointment.jpg);}
+    background-image: linear-gradient(to right bottom, #e3fdf5, #daf9f9, #d4f4fd, #d4eeff, #d9e7ff, #d9e7ff, #d9e7ff, #d9e7ff, #d4eeff, #d4f4fd, #daf9f9, #e3fdf5);
+}
 
 #appt-form {
     width: 800px;
@@ -704,8 +712,13 @@ select {
 	margin: 60px;
 }
 
+.dentist-name {
+    font-size: 24px;
+}
+
 .dentist-subtitle {
 	margin-top: 12px;
+    font-size: 18px;
 }
 
 /* dentist page collapsible*/
@@ -733,6 +746,10 @@ select {
     background-color: #e2ebf5;
 }
 
+.collapsecontent p {
+    line-height: 1.6;
+}
+
 .table-col__one {
     text-align: center;
     padding-left: 10px;
@@ -757,9 +774,9 @@ select {
     margin: 10px;
 }
 
-.form-col__two small {
+.form-col__two small,
+.form-input small {
     margin: 0px;
-   
     color: red;
 }
 

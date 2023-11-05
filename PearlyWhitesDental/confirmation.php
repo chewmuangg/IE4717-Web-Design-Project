@@ -126,11 +126,11 @@ $dbcnx->close();
 	<!-- start of nav bar -->
 	<header>
 		<nav id="header-container">
-			<a href="index.html"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
+			<a href="index.php"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
 			<div id="header-links">
-				<a href="index.html">Home</a>
-				<a href="our-dentists.html">Our Dentists</a>
-				<a href="contact-us.html">Contact Us</a>
+				<a href="index.php">Home</a>
+				<a href="our-dentists.php">Our Dentists</a>
+				<a href="contact-us.php">Contact Us</a>
 
 				<!-- dropdown for account page & logout -->
 				<div class="dropdown">
@@ -151,7 +151,7 @@ $dbcnx->close();
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container acct-container" style="color: white">
+	<div class="container acct-container">
 		<?php
 		if ($is_reschedule) {
 			// appointment is rescheduled

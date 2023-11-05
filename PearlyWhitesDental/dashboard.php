@@ -56,12 +56,18 @@
 	<title>My Account | Pearly Whites Dental</title>
 	<meta charset="utf-8">
 
+	<!-- javascript -->
+	<script type="text/javascript" src="btn-func.js"></script>
+
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 	<?php 
+		// current date
+		$currentDate = date("Y-m-d");
+
 		// check if user login is valid	
 		if (!isset($_SESSION['valid_user'])) {
 			// unsucessful user login
@@ -86,7 +92,7 @@
 					default:
 						// dentist
 						// query formulation
-						$apptQuery = "SELECT * FROM appointments WHERE dentistId=".$_SESSION['user_id']." ORDER BY date ASC";
+						$apptQuery = "SELECT * FROM appointments WHERE dentistId=".$_SESSION['user_id']." AND date > '".$currentDate."' ORDER BY date ASC";
 				}
 
 			} else {
@@ -115,11 +121,11 @@
 	<!-- start of nav bar -->
 	<header>
 		<nav id="header-container">
-			<a href="index.html"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
+			<a href="index.php"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
 			<div id="header-links">
-				<a href="index.html">Home</a>
-				<a href="our-dentists.html">Our Dentists</a>
-				<a href="contact-us.html">Contact Us</a>
+				<a href="index.php">Home</a>
+				<a href="our-dentists.php">Our Dentists</a>
+				<a href="contact-us.php">Contact Us</a>
 
 				<!-- dropdown for account page & logout -->
 				<div class="dropdown">
@@ -140,7 +146,7 @@
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container acct-container" style="color:white">
+	<div class="container acct-container">
 		<h1>Hello, <?php echo $_SESSION['valid_user'];?>!</h1>
 		
 		<!-- show text for patients accs, hide for dentists accs -->
@@ -228,8 +234,11 @@
 						echo "</div>";
 						echo "</div>";
 
+						echo '<div class="row" style="gap: 24px;">';
+						echo "<a class='btn-outline btn-cancel' id='btn-delete' href='cancel.php?apptId=".$apptId."'>Cancel</a>";
 						echo "<a class='btn-outline' href='reschedule.php?apptId=".$apptId."'>Reschedule</a>";
-
+                		echo "</div>";
+						
                 		echo "</div>";
 					}
 				?>
@@ -250,6 +259,10 @@
 
                 </div> -->
 				<!-- end of an appointment card --> 
+
+				<div <?php if(count($_SESSION['appointments']) == 0) echo 'style="display: none;"'; ?>>
+					<p>--- OLD APPOINTMENTS ARE NOT SHOWN ---</p>
+				</div>
 
 				<!-- Start of no appointments card -->
                 <div class="no-schdl-card" <?php if(count($_SESSION['appointments']) > 0) echo 'style="display: none;"'; ?>>

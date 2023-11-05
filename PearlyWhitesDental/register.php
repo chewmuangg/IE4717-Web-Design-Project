@@ -22,7 +22,10 @@ $password2 = $_POST['password2'];
 
 // check if password is entered correctly
 if ($password != $password2) {
-	echo "Sorry passwords do not match";
+	echo "<script>";
+	echo "alert('Sorry passwords do not match! Please enter your password correctly.');";
+	echo "window.location.href = 'signup.html';"; // Redirect to signup.html
+	echo "</script>";
 	exit;
 }
 

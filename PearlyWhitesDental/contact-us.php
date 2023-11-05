@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,12 +18,40 @@
 	<!-- start of nav bar -->
 	<header>
 		<nav id="header-container">
-			<a href="index.html"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
+			<a href="index.php"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
 			<div id="header-links">
-				<a href="index.html">Home</a>
-				<a href="our-dentists.html">Our Dentists</a>
-				<a href="contact-us.html">Contact Us</a>
-				<a href="login.html" class="btn-pri btn-login" style="color: white;">Log In</a>
+				<a href="index.php">Home</a>
+				<a href="our-dentists.php">Our Dentists</a>
+				<a href="contact-us.php">Contact Us</a>
+
+				<!-- Log in button, show when not logged in --> 
+				<?php 
+					if (!isset($_SESSION['valid_user'])) {
+						// not logged in, show logged in button 
+						echo '<a href="login.html" class="btn-pri btn-login" style="color: white;">Log In</a>';
+					}
+				?>
+				
+				<!-- dropdown for account page & logout -->
+				<div class="dropdown" 
+					<?php 
+						// hide if not logged in
+						if (!isset($_SESSION['valid_user'])) {
+							echo 'style="display: none;"';
+						}
+					?>
+				>
+					<button class="dropbtn">
+						<img src="images/icon_account.png" width="32" height="32"> 
+					</button>
+					<div class="dropdown-content">
+						<!-- My Account button --> 
+						<a href="dashboard.php">My Account</a>
+						
+						<!-- logout button -->
+						<a href="logout.php">Logout</a>
+					</div>
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -36,6 +68,8 @@
 
 		<!-- page content -->
 		<div class="main-content">
+			<div style="height: 60px;"></div>
+
 			<div id="leftcolumn">
 				<br>
 				<img src="images/map.png" alt="map">
@@ -67,14 +101,14 @@
 					<img src="images/icon_mail.png" width="20" height="20" alt="email">
 					<div style="margin-left: 10px">enquiry@pearlywhites.com</div>
 				</div>
-					
 			</div>
+
+			<div style="height: 40px; clear: both;"></div>
 			
 		</div>
 		<div>
-			<br>
 			<h1>Send us your enquiries below </h1>
-			<form  action="enquiries.php" method="post">
+			<form action="enquiries.php" method="post">
 				<div>
 					<div class="form-col__two">
 						<input type="text" name="name" id="name" class="form-row__one" size="50" required placeholder="Name">
@@ -107,6 +141,8 @@
 				<br>
 				<input type="submit" class="btn-outline btn-submit" id="btnSubmit" value="Send message">
 			</form>
+
+			<div style="height: 80px;"></div>
 		</div>
 	</div>
 	

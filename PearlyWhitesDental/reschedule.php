@@ -80,11 +80,11 @@ $dbcnx->close();
 	<!-- start of nav bar -->
 	<header>
 		<nav id="header-container">
-			<a href="index.html"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
+			<a href="index.php"><img src="images/logo.png" id="header-logo" alt="Pearly Whites Dental Logo"></a>
 			<div id="header-links">
-				<a href="index.html">Home</a>
-				<a href="our-dentists.html">Our Dentists</a>
-				<a href="contact-us.html">Contact Us</a>
+				<a href="index.php">Home</a>
+				<a href="our-dentists.php">Our Dentists</a>
+				<a href="contact-us.php">Contact Us</a>
 
 				<!-- dropdown for account page & logout -->
 				<div class="dropdown">
@@ -105,7 +105,7 @@ $dbcnx->close();
 	<!-- end of nav bar -->
 
 	<!-- page content -->
-	<div class="container acct-container" style="color: white">
+	<div class="container acct-container">
 		<h1>Reschedule Appointment</h1>
 		<div id="resch-cards-row" style="color: black">
 			<!-- current appointment column -->
@@ -173,33 +173,33 @@ $dbcnx->close();
 					</div>
 					<div class="col">
 						<div class="time-row">
-							<input type="radio" name="time" class="radio" id="timeslot1" value="0900">
+							<input type="radio" name="time" class="radio" id="timeslot1" value="09:00">
 							<label class="radio-label label-1 timeslot" for="timeslot1">9.00 AM</label>
 
-							<input type="radio" name="time" class="radio" id="timeslot2" value="1000">
+							<input type="radio" name="time" class="radio" id="timeslot2" value="10:00">
 							<label class="radio-label label-2 timeslot" for="timeslot2">10.00 AM</label>
 
-							<input type="radio" name="time" class="radio" id="timeslot3" value="1100">
+							<input type="radio" name="time" class="radio" id="timeslot3" value="11:00">
 							<label class="radio-label label-3 timeslot" for="timeslot3">11.00 AM</label>
 						</div>
 						<div class="time-row">
-							<input type="radio" name="time" class="radio" id="timeslot4" value="1330">
+							<input type="radio" name="time" class="radio" id="timeslot4" value="13:30">
 							<label class="radio-label label-4 timeslot" for="timeslot4">1.30 PM</label>
 
-							<input type="radio" name="time" class="radio" id="timeslot5" value="1430">
+							<input type="radio" name="time" class="radio" id="timeslot5" value="14:30">
 							<label class="radio-label label-5 timeslot" for="timeslot5">2.30 PM</label>
 
-							<input type="radio" name="time" class="radio" id="timeslot6" value="1530">
+							<input type="radio" name="time" class="radio" id="timeslot6" value="15:30">
 							<label class="radio-label label-6 timeslot" for="timeslot6">3.30 PM</label>
 						</div>
 						<div class="time-row">
-							<input type="radio" name="time" class="radio" id="timeslot7" value="1630">
+							<input type="radio" name="time" class="radio" id="timeslot7" value="16:30">
 							<label class="radio-label label-7 timeslot" for="timeslot7">4.30 PM</label>
 
-							<input type="radio" name="time" class="radio" id="timeslot8" value="1730">
+							<input type="radio" name="time" class="radio" id="timeslot8" value="17:30">
 							<label class="radio-label label-8 timeslot" for="timeslot8">5.30 PM</label>
 
-							<input type="radio" name="time" class="radio" id="timeslot9" value="1830">
+							<input type="radio" name="time" class="radio" id="timeslot9" value="18:30">
 							<label class="radio-label label-9 timeslot" for="timeslot9">6.30 PM</label>
 						</div>
 						<!-- event handler for radio button group "time" assigned in input_display.js -->
