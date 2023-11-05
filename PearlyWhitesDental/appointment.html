@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Pearly Whites Dental</title>
+	<title>Book an Appointment | Pearly Whites Dental</title>
 	<meta charset="utf-8">
 
 	<!-- javascript-->
@@ -21,13 +21,19 @@
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
+
+				<!-- dropdown for account page & logout -->
 				<div class="dropdown">
-					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32"> 
-					  
+					<button class="dropbtn">
+						<img src="images/icon_account.png" width="32" height="32"> 
 					</button>
+
 					<div class="dropdown-content">
-					  <a href="dashboard.php">My Appointments</a>
-					  <a href="logout.php">Logout</a>
+						<!-- My Account Page-->
+						<a href="dashboard.php">My Account</a>
+						
+						<!-- Logout Button -->
+						<a href="logout.php">Logout</a>
 					</div>
 				</div> 
 			</div>
@@ -42,20 +48,22 @@
 			<form method="post" action="confirmation.php" id="appt-form">
 				<div class="appt-form-step">
 					<p>Step 1 of 3: Choose your dentist</p>
-					<div class="appt-form-row1">
-						<input type="radio" name="dentist" class="radio" id="dr1" value="2001" required>
-						<label class="radio-label-dentist label-1" for="dr1">Dr. Emily Pearson</label>
+					<div class="toggle-radio-grp">
+						<input type="radio" name="dentist" class="radio" id="dr1" value="2001">
+						<label class="radio-label-dentist" for="dr1">Dr. Emily Pearson</label>
+						
 						<input type="radio" name="dentist" class="radio" id="dr2" value="2002">
-						<label class="radio-label-dentist label-2" for="dr2">Dr. Carlos Novakowski</label>
+						<label class="radio-label-dentist" for="dr2">Dr. Carlos Novakowski</label>
+						
 						<input type="radio" name="dentist" class="radio" id="dr3" value="2003">
-						<label class="radio-label-dentist label-3" for="dr3">Dr. Sarah Rodriguez</label>
+						<label class="radio-label-dentist" for="dr3">Dr. Sarah Rodriguez</label>
 					</div>
 				</div>
 
 				<div class="appt-form-step">
 					<p>Step 2 of 3: Choose a service</p>
 					<select name="serviceType">
-						<option>--- Select one ---</option>
+						<option value="0">--- Select one ---</option>
 						<option value="Consultation">Consultation</option>
 						<option value="Scaling & Polishing">Scaling & Polishing</option>
 						<option value="Emergency Dental Care">Emergency Dental Care</option>

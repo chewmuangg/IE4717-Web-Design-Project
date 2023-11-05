@@ -53,7 +53,7 @@
 <html lang="en">
 
 <head>
-	<title>Pearly Whites Dental</title>
+	<title>My Account | Pearly Whites Dental</title>
 	<meta charset="utf-8">
 
 	<!-- stylesheet -->
@@ -121,13 +121,15 @@
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
 
-				<!-- dropdown for appointment page & logout -->
+				<!-- dropdown for account page & logout -->
 				<div class="dropdown">
 					<button class="dropbtn">
 						<img src="images/icon_account.png" width="32" height="32"> 
 					</button>
 					<div class="dropdown-content">
-						<a href="dashboard.php">My Appointments</a>
+						<!-- My Account button --> 
+						<a href="dashboard.php">My Account</a>
+						
 						<!-- logout button -->
 						<a href="logout.php">Logout</a>
 					</div>
@@ -212,16 +214,16 @@
 							$name = $row['name'];
 						}
 						
-						echo "<div class='row align-items-center'>";
-						echo "<div class='col'>";
-						echo "<p>".$date."</p>";
+						echo "<div class='schdl-card-content'>";
+						echo "<div class='col-date-time'>";
+						echo "<p style='font-size: 20px;'>".$date."</p>";
 						echo "<p>".$time."</p>";
 						echo "</div>";
 						
 						echo "<div class='vertical-line'></div>";
 						
 						echo "<div class='col'>";
-						echo "<p>".$name."</p>";
+						echo "<p style='font-size: 20px; font-weight: 600;'>".$name."</p>";
 						echo "<p>".$service."</p>";
 						echo "</div>";
 						echo "</div>";

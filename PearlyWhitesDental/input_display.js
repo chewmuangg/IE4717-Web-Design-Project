@@ -4,7 +4,8 @@ function displayNewDate() {
 
     // Display new date in appt card
     var dateOutput = document.getElementById("displayDate");
-    dateOutput.textContent = newDate;
+    dateOutput.textContent = "New date: " + newDate;
+    dateOutput.style.fontWeight = "bold";
 
 }
 
@@ -12,14 +13,31 @@ function displayNewTime() {
     // Get radio button selection
     var selectedTimeslot = document.querySelector('input[name="time"]:checked');
     
-    // Check if there is a selection in the Cafe au Lait Radio Button Group
+    // Check if there is a selection in the time Radio Button Group
     if (selectedTimeslot) {
         // have selection in timeslot radio button group
     
         // Display new selected timeslot in appt card
         //var newTimeslot = selectedTimeslot.value;
         var timeOutput = document.getElementById("displayTime");
-        timeOutput.textContent = selectedTimeslot.value;
+        timeOutput.textContent = "New time: " + selectedTimeslot.value;
+        timeOutput.style.fontWeight = "bold";
+    }
+
+}
+
+// Rescheduling form validation in reschedule.php
+function formChecker() {
+    // Time radio button selection
+    var selectedTimeslot = document.querySelector('input[name="time"]:checked');
+    
+    if (!selectedTimeslot) {
+        // no selection of timeslot
+        alert('Please select a preferred timeslot.');
+        return false; // Prevent form submission
+    } else {
+        // all inputs are filled, submit form
+        return true;
     }
 
 }
@@ -67,6 +85,10 @@ function init() {
         timeRadioBtns[6].onclick = displayNewTime;
         timeRadioBtns[7].onclick = displayNewTime;
         timeRadioBtns[8].onclick = displayNewTime;
+
+        // validates all fields in the form upon clicking submit button
+        var form = document.getElementById("reschForm");
+        form.onsubmit = formChecker;
     }
 
 }
