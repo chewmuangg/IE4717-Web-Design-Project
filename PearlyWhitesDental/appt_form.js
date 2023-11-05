@@ -4,6 +4,40 @@ function showTimeslots() {
     timeslotDiv.style.display = "block";
 }
 
+// Booking form validation in appointment.html (new appt)
+function formChecker() {
+    // Get Dentist radio button selection
+    var selectedDentist = document.querySelector('input[name="dentist"]:checked');
+    //var dentist = selectedDentist.value;
+    
+    // Select Service Type Input
+    var selectService = document.querySelector('select[name="serviceType"]');
+    var selectedOption = selectService.selectedIndex;
+    
+    // Time radio button selection
+    var selectedTimeslot = document.querySelector('input[name="time"]:checked');
+    
+    if (!selectedDentist) {
+        // no selection of dentist
+        alert('Please select a preferred dentist.');
+        return false; // Prevent form submission
+
+    } else if (selectedOption === -1 || selectedOption === 0) {
+        // no selection of service
+        alert('Please select a valid service type.');
+        return false; // Prevent form submission
+
+    } else if (!selectedTimeslot) {
+        // no selection of timeslot
+        alert('Please select a preferred timeslot.');
+        return false; // Prevent form submission
+    } else {
+        // all inputs are filled, submit form
+        return true;
+    }
+
+}
+
 function init() {
     'use strict';
 
@@ -31,6 +65,10 @@ function init() {
         // sets min date attribute for date picker
         var dateInput = document.getElementById("date");
         dateInput.setAttribute('min', minDate);
+
+        // validates all fields in the form upon clicking submit button
+        var form = document.getElementById("appt-form");
+        form.onsubmit = formChecker;
     }
 
 }

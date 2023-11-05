@@ -80,7 +80,7 @@ header a {
 
 .dentists-img {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-	url(../images/dentists.jpg);
+	url(../images/dentist-and-patient.jpg);
 
     width: 100%;
 	height: 600px;
@@ -101,7 +101,7 @@ header a {
 
 .contact-img {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-	url(../images/contactus2.jpg);
+	url(../images/background.jpg);
     width: 100%;
 	height: 600px;
 	background-position: center;
@@ -215,9 +215,9 @@ tr:nth-child(odd) {
 }
 
 .vertical-line {
-    border-left: 1px solid grey;
-    height: 80px;
-    margin: 0px 24px;
+    border-left: 2px solid rgba(83, 127, 231, 0.4);
+    height: 98px;
+    margin: 0px 40px;
 }
 
 .justify-content-center {
@@ -360,8 +360,8 @@ hr {
     margin-top: 120px;
 }
 
-
-.acct-radio-grp {
+/* toggle radio buttons styles */
+.toggle-radio-grp {
     width: fit-content;
     border: 1px solid #666;
     border-radius: 4px;
@@ -372,8 +372,8 @@ hr {
     margin: 8px 0px 16px;
 }
 
-.acct-radio-grp label {
-    width: 112px;
+.toggle-radio-grp label {
+    width: 116px;
     padding: 10px 16px;
     border-right: 1px solid #ccc;
     text-align: center;
@@ -381,18 +381,32 @@ hr {
     transition: all 0.3s;
 }
 
-.acct-radio-grp label:last-of-type {
+/* for booking appt toggle radio buttons */
+.appt-form-step .toggle-radio-grp {
+    margin: 0px;
+}
+
+.toggle-radio-grp .radio-label-dentist {
+	width: 234px;
+    padding: 16px;
+} 
+/* end of booking appt toggle */
+
+.toggle-radio-grp label:last-of-type {
     border-right: 0;
 }
 
-.acct-radio-grp label:hover {
-    background: #eee;
+.toggle-radio-grp label:hover {
+    background: rgba(165, 211, 240, 0.4);
 }
 
-.acct-radio-grp input:checked + label {
-    background: #becbff;
+.toggle-radio-grp input:checked + label {
+    background: #A5D3F0;
+    font-weight: 600;
 }
+/* end of toggle radio buttons styles */
 
+/* form styling */
 .form-input {
     margin: 8px 0px 16px;
 }
@@ -403,7 +417,17 @@ hr {
 }
 
 #loginForm input {
-    width: 98%;
+    width: 96%;
+}
+
+#name,
+#email,
+#password,
+#password2,
+#contactnumber,
+#message {
+    font-size: 16px;
+    padding: 2px 4px;
 }
 
 #loginForm #btnSubmit {
@@ -428,8 +452,12 @@ hr {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-	url(../images/appointment.jpg);
+    background-image: linear-gradient(to right bottom, #e3fdf5, #daf9f9, #d4f4fd, #d4eeff, #d9e7ff, #d9e7ff, #d9e7ff, #d9e7ff, #d4eeff, #d4f4fd, #daf9f9, #e3fdf5);
+}
+
+.acct-container > p {
+    font-size: 18px;
+    margin-top: 4px;
 }
 
 .dashboard {
@@ -442,12 +470,29 @@ hr {
     text-align: start;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 40px;
-    margin-bottom: 24px;
-    background-color: #A5D3F0;
+    padding: 24px;
+    margin-bottom: 32px;
+    background-color: #b7daf4;
     border-radius: 8px;
     border: 1px solid rgba(24, 24, 35, 0.1);
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.schdl-card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.schdl-card-content p {
+    margin: 10px;
+}
+
+.col-date-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
 }
 
 .no-schdl-card {
@@ -485,11 +530,11 @@ hr {
     padding-bottom: 16px;
 }
 
-.appt-form-row1 {
+/* .appt-form-row1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
+} */
 
 .appt-form-submit {
     display: flex;
@@ -498,33 +543,31 @@ hr {
 
 }
 
-/* radio buttons styling */
+/* timeslot radio buttons styling */
 .radio {
 	display: none;
-}
-
-.radio-label-dentist {
-	padding: 12px 32px;
-	background-color: #b5d4f5;
-	color: #fff;
-	cursor: pointer;
-	font-size: 20px;
 }
 
 .radio-label {
     margin: 0px 12px;
 	padding: 12px 24px;
-	background-color: #b5d4f5;
-	color: #fff;
+	background-color: #E8ECF1;
+	color: rgba(24, 24, 35, 0.5);
+    border-radius: 6px;
+    border: 2px solid #E8ECF1;
 	cursor: pointer;
-	font-size: 20px;
+	font-size: 18px;
 }
 
-#dr1:checked ~ .label-1,
+.radio-label:hover {
+    background: rgba(165, 211, 240, 0.4);
+}
+
+/* #dr1:checked ~ .label-1,
 #dr2:checked ~ .label-2,
 #dr3:checked ~ .label-3 {
 	background-color: #0069d9;
-}
+} */
 
 #timeslot1:checked ~ .label-1,
 #timeslot2:checked ~ .label-2,
@@ -535,7 +578,11 @@ hr {
 #timeslot7:checked ~ .label-7,
 #timeslot8:checked ~ .label-8,
 #timeslot9:checked ~ .label-9 {
-	background-color: #0069d9;
+	background-color: #A5D3F0;
+    color: #181823;
+    border: 2px solid rgba(24, 24, 35, 0.3);
+    font-weight: 600;
+
 }
 
 .timeslot {
@@ -582,7 +629,8 @@ select {
     justify-content: center;
     align-items: flex-start;
     text-align: start;
-    width: 240px;
+    min-width: 240px;
+    width: fit-content;
     padding: 10px 40px;
     margin: 0px 20px;
     background-color: #b7daf4;
@@ -603,8 +651,10 @@ select {
     justify-content: flex-start;
     align-items: center;
     text-align: start;
-    width: 400px;
-    margin: auto;
+    min-width: 400px;
+    width: fit-content;
+    padding: 10px 40px 10px 0px;
+    margin: 24px auto;
     background-color: #b7daf4;
     border-radius: 8px;
     border: 1px solid rgba(24, 24, 35, 0.1);
@@ -715,54 +765,46 @@ select {
 
 .icons {
     display: flex;
-    align: center;
-    
-}
-
-
-ul {
-    margin-top: 0px;
-    padding-left: 26px;
-    list-style-image: url(../images/phone.png);
-    /* image from <a href="https://www.flaticon.com/free-icons/phone" title="phone icons">Phone icons created by Prosymbols - Flaticon</a> */
-}
-
-
-
-ol {
-    margin-top: 0px;
-    padding-left: 26px;
-    list-style-image: url(../images/email.png);
-    /* image from <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Freepik - Flaticon</a> */
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
 }
 
 /* dropdown style */
 .dropdown {
     float: left;
     overflow: hidden;
-  }
+}
   
 .dropdown .dropbtn {
-    font-size: 16px;  
     border: none;
     outline: none;
-    color: white;
     padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
+    background-color: transparent;
+}
+
+.dropdown .dropbtn:hover {
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    background-color: rgba(215, 247, 255, 0.8);
+    border-radius: 40px;
+}
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #F7F7F7;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     margin-left: -60px;
-  }
-  
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 .dropdown-content a {
     float: none;
     color: black;
@@ -770,12 +812,9 @@ ol {
     text-decoration: none;
     display: block;
     text-align: left;
-  }
+}
   
 .dropdown-content a:hover {
-    background-color: #ddd;
-  }
+    background-color: rgba(215, 247, 255, 0.8);
+}
   
-.dropdown:hover .dropdown-content {
-    display: block;
-  }

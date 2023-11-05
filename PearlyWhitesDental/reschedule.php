@@ -66,7 +66,7 @@ $dbcnx->close();
 <html lang="en">
 
 <head>
-	<title>Pearly Whites Dental</title>
+	<title>Reschedule an Appointment | Pearly Whites Dental</title>
 	<meta charset="utf-8">
 	
 	<!-- javascript -->
@@ -85,13 +85,18 @@ $dbcnx->close();
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
+
+				<!-- dropdown for account page & logout -->
 				<div class="dropdown">
-					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32"> 
-					  
+					<button class="dropbtn">
+						<img src="images/icon_account.png" width="32" height="32"> 
 					</button>
 					<div class="dropdown-content">
-					  <a href="dashboard.php">My Appointments</a>
-					  <a href="logout.php">Logout</a>
+						<!-- My Account Page --> 
+						<a href="dashboard.php">My Account</a>
+
+						<!-- Logout Button -->
+						<a href="logout.php">Logout</a>
 					</div>
 				</div> 
 			</div>
@@ -109,10 +114,21 @@ $dbcnx->close();
 				<div class="resch-card">
 					<h3>Current appointment</h3>
 					<div>
-						<p><?php echo $date; ?></p>
-						<p><?php echo $time; ?></p>
-						<p><?php echo $name; ?></p>
-						<p><?php echo $service; ?></p>
+						<p>Date: <?php echo $date; ?></p>
+						<p>Time: <?php echo $time; ?></p>
+						<p>
+							<?php 
+								if ($_SESSION['user_type'] == 1) {
+									// show dentist's name if patient book or reschedule the appt
+									echo "Name of Dentist: " . $name; 
+
+								} elseif ($_SESSION['user_type'] == 9) {
+									// show patient's name if dentist reschedule the appt 
+									echo "Name of Patient: " . $name; 
+								}
+							?>
+						</p>
+						<p>Service: <?php echo $service; ?></p>
 					</div>
 				</div>
 			</div>
@@ -125,10 +141,21 @@ $dbcnx->close();
 				<div class="resch-card">
 					<h3>New appointment</h3>
 					<div>
-						<p id="displayDate">new date</p>
-						<p id="displayTime">new time</p>
-						<p><?php echo $name; ?></p>
-						<p><?php echo $service; ?></p>
+						<p id="displayDate"><i>Choose a new date</i></p>
+						<p id="displayTime"><i>Choose a new time</i></p>
+						<p>
+							<?php 
+								if ($_SESSION['user_type'] == 1) {
+									// show dentist's name if patient book or reschedule the appt
+									echo "Name of Dentist: " . $name; 
+
+								} elseif ($_SESSION['user_type'] == 9) {
+									// show patient's name if dentist reschedule the appt 
+									echo "Name of Patient: " . $name; 
+								}
+							?>
+						</p>
+						<p>Service: <?php echo $service; ?></p>
 					</div>
 				</div>
 

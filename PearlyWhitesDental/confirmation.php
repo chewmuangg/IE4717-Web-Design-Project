@@ -131,12 +131,17 @@ $dbcnx->close();
 				<a href="index.html">Home</a>
 				<a href="our-dentists.html">Our Dentists</a>
 				<a href="contact-us.html">Contact Us</a>
-				<div class="dropdown">
-					<button class="dropbtn"><img src="images/icon_account.png" width="32" height="32">
 
+				<!-- dropdown for account page & logout -->
+				<div class="dropdown">
+					<button class="dropbtn">
+						<img src="images/icon_account.png" width="32" height="32">
 					</button>
 					<div class="dropdown-content">
-						<a href="dashboard.php">My Appointments</a>
+						<!-- My Account Page -->
+						<a href="dashboard.php">My Account</a>
+
+						<!-- Logout Button -->
 						<a href="logout.php">Logout</a>
 					</div>
 				</div>
@@ -173,10 +178,21 @@ $dbcnx->close();
 				<img src="images/icon_event.png" width="112" height="112">
 			</div>
 			<div>
-				<p><?php echo $date; ?></p>
-				<p><?php echo $time; ?></p>
-				<p><?php echo $name; ?></p>
-				<p><?php echo $service; ?></p>
+				<p>Date: <?php echo $date; ?></p>
+				<p>Time: <?php echo $time; ?></p>
+				<p>
+					<?php 
+						if ($_SESSION['user_type'] == 1) {
+							// show dentist's name if patient book or reschedule the appt
+							echo "Name of Dentist: " . $name; 
+
+						} elseif ($_SESSION['user_type'] == 9) {
+							// show patient's name if dentist reschedule the appt 
+							echo "Name of Patient: " . $name; 
+						}
+					?>
+				</p>
+				<p>Service: <?php echo $service; ?></p>
 			</div>
 		</div>
 		<br>
@@ -206,20 +222,58 @@ $dbcnx->close();
 	<!-- end of footer -->
 
 	<?php
-		$to = 'f31ee@localhost';
-		$from = 'appointments@pearlywhites.com';
-		$fromName = 'Pearly Whites Dental';
-		$subject = 'Confirmation of appointment at Pearly Whites Dental';
-		$dentistId = $_POST['dentist'];
-		$date = "\n\nDate: " . $_POST['date'];
-		$time = "\n\nTime: " . $_POST['time'];
-		$service = "\n\nService: " . $_POST['serviceType'];
-		$message = 'Here are the details of your appointment: ' . $service . $date . $time;
-		$headers = 'From: ' . $fromName . '<' . $from . '>' . "\r\n" .
-			'Reply-To: f31ee@localhost' . "\r\n" .
-			'X-Mailer: PHP/' . phpversion();
+		// Send email to patient 
 
-		mail($to, $subject, $message, $headers, '-ff32ee@localhost');
+		// get dentist's name
+		switch ($dentistId) {
+			case 2001:
+				$dentistName = "Dr. Emily Pearson";
+				break;
+			case 2002:
+				$dentistName = "Dr. Carlos Novakowski";
+				break;
+			case 2003:
+				$dentistName = "Dr. Sarah Rodriguez";
+				break;
+			default:
+				$name = "Unknown Dentist...";
+		}
+
+		if ($is_reschedule) {
+			// Reschedule email notification
+			$to = 'f31ee@localhost';
+			$from = 'appointments@pearlywhites.com';
+			$fromName = 'Pearly Whites Dental';
+			$subject = 'Appointment rescheduled - Pearly Whites Dental';
+			$dateText = "\n\nDate: " . $date;
+			$timeText = "\n\nTime: " . $time;
+			$serviceText = "\n\nService: " . $service;
+			$dentistText = "\n\nDentist: " . $dentistName;
+			$message = 'You have rescheduled your appointment with us. Here are the details of your new appointment: ' . $dentistText . $serviceText . $dateText . $timeText;
+			$headers = 'From: ' . $fromName . '<' . $from . '>' . "\r\n" .
+				'Reply-To: f31ee@localhost' . "\r\n" .
+				'X-Mailer: PHP/' . phpversion();
+	
+			mail($to, $subject, $message, $headers, '-ff32ee@localhost');
+
+		} else {
+			// New Appointment email notification
+			$to = 'f31ee@localhost';
+			$from = 'appointments@pearlywhites.com';
+			$fromName = 'Pearly Whites Dental';
+			$subject = 'Confirmation of appointment at Pearly Whites Dental';
+			$dateText = "\n\nDate: " . $date;
+			$timeText = "\n\nTime: " . $time;
+			$serviceText = "\n\nService: " . $service;
+			$dentistText = "\n\nDentist: " . $dentistName;
+			$message = 'Thank you for choosing us. Here are the details of your appointment: ' . $dentistText . $serviceText . $dateText . $timeText;
+			$headers = 'From: ' . $fromName . '<' . $from . '>' . "\r\n" .
+				'Reply-To: f31ee@localhost' . "\r\n" .
+				'X-Mailer: PHP/' . phpversion();
+	
+			mail($to, $subject, $message, $headers, '-ff32ee@localhost');
+
+		}
 
 	?>
 
