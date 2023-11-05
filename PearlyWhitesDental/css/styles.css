@@ -205,6 +205,7 @@ tr:nth-child(odd) {
 .row {
     display: flex;
     flex-direction: row;
+  
 }
 
 
@@ -649,8 +650,8 @@ select {
 .col-dentist {
 	display: flex;
 	flex-direction: column;
-	width: 400px;
-	margin: 90px;
+	width: 300px;
+	margin: 60px;
 }
 
 .dentist-subtitle {
