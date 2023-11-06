@@ -45,7 +45,7 @@ foreach ($unavailTimeslots as $timeslots) {
 if ($apptExists) {
 	echo "<script>";
 	echo "alert('Oh no! It seems like the timeslot is unavailable. Please select another timeslot! Sorry for the inconvenience caused!');";
-	echo "window.location.href = 'appointment.html';"; // Redirect to appointment.html
+	echo "window.location.href = 'appointment.php';"; // Redirect to appointment.php
 	echo "</script>";
 
 	exit;
@@ -80,12 +80,61 @@ if (isset($_POST['rescheduleID'])) {
 			default:
 				$name = "Unknown Dentist...";
 		}
+
+		// query formulation
+		$query = "INSERT INTO appointments (userId, dentistId, date, time, serviceType)
+					VALUES (" . $_SESSION['user_id'] . ", " . $dentistId . ", '" . $date . "', '" . $time . "', '" . $service . "')";
+
 	} elseif ($_SESSION['user_type'] == 9) {
+		// Denstist or Admin is booking new appointment
+		// get patient's Id input
+		$inputPatientId = $_POST['patientId'];
+
+		// Check for valid patientId input
+		if (preg_match('/^1\d{3}$/', $inputPatientId)) {
+			// valid patient ID
+
+			// check if patient ID exist in user table database 
+			$validPatientQuery = "SELECT userId FROM users WHERE userId=" . $inputPatientId;
+
+			// run query
+			$patientResult = $dbcnx->query($validPatientQuery);
+
+			// fetch name from database
+			if ($patientResult->num_rows == 0) {
+				// patientId does not exist!
+				echo "<script>";
+				echo "alert('Patient does not exist in our database!');";
+				echo "window.location.href = 'appointment.php';"; // Redirect to appointment.php
+				echo "</script>";
+
+				exit;
+
+			} else {
+				// patientId exists
+				$patientId = $inputPatientId;
+			}
+			
+		} else {
+			// Invalid patient ID, redirect back to appointment booking page
+			echo "<script>";
+			echo "alert('Invalid patientID');";
+			echo "window.location.href = 'appointment.php';"; // Redirect to appointment.php
+			echo "</script>";
+
+			exit;
+		}
+
+
+		// query formulation
+		$query = "INSERT INTO appointments (userId, dentistId, date, time, serviceType)
+					VALUES (" . $patientId . ", " . $dentistId . ", '" . $date . "', '" . $time . "', '" . $service . "')";
+		
 		// is a dentist / admin acc, display patient's name in appt card
 		// get patient's name
 
 		// query formulation 
-		$nameQuery = "SELECT name FROM users WHERE userId=" . $userId;
+		$nameQuery = "SELECT name FROM users WHERE userId=" . $patientId;
 
 		// run query
 		$nameResult = $dbcnx->query($nameQuery);
@@ -95,9 +144,7 @@ if (isset($_POST['rescheduleID'])) {
 		$name = $row['name'];
 	}
 
-	// query formulation
-	$query = "INSERT INTO appointments (userId, dentistId, date, time, serviceType)
-				VALUES (" . $_SESSION['user_id'] . ", " . $dentistId . ", '" . $date . "', '" . $time . "', '" . $service . "')";
+	
 }
 
 // query submission
@@ -117,6 +164,9 @@ $dbcnx->close();
 <head>
 	<title>Pearly Whites Dental</title>
 	<meta charset="utf-8">
+
+	<!-- javascript -->
+	<script type="text/javascript" src="btn-func.js"></script>
 
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
@@ -142,7 +192,7 @@ $dbcnx->close();
 						<a href="dashboard.php">My Account</a>
 
 						<!-- Logout Button -->
-						<a href="logout.php">Logout</a>
+						<a href="logout.php" onclick="return confirmLogout();">Log Out</a>
 					</div>
 				</div>
 			</div>
@@ -200,7 +250,7 @@ $dbcnx->close();
 		<!-- buttons -->
 		<div id="cfm-page-btns">
 			<a href="dashboard.php" class="btn-outline">Back to my dashboard</a>
-			<a href="logout.php" class="btn-pri">Log out</a>
+			<a href="logout.php" class="btn-pri" onclick="return confirmLogout();">Log out</a>
 		</div>
 	</div>
 

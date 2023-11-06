@@ -4,6 +4,27 @@ function showTimeslots() {
     timeslotDiv.style.display = "block";
 }
 
+// Checks for valid patient Id input
+function patientIdChecker() {
+    var patientId = document.getElementById("patientId").value;
+    validPatientId = patientId.search(/^1\d{3}$/);  // checks for a 4 digit number starting with 1
+
+    var text;
+
+    if (validPatientId != 0) {
+        text = "Invalid patient ID format!";
+    } else {
+        text = "";
+    }
+
+    // display error message if input length is more than 0
+    if (patientId.length > 0) {
+        document.getElementById("patientId-error").innerHTML = text;
+    } else {
+        document.getElementById("patientId-error").innerHTML = ""; 
+    }
+}
+
 // Booking form validation in appointment.html (new appt)
 function formChecker() {
     // Get Dentist radio button selection

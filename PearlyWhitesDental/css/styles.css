@@ -538,6 +538,16 @@ hr {
     padding-bottom: 16px;
 }
 
+.appt-form-patientId {
+    margin-top: 16px;
+    padding-bottom: 16px;
+}
+
+#patientId-error {
+    margin-left: 16px;
+    color: red;
+}
+
 /* .appt-form-row1 {
     display: flex;
     flex-direction: row;

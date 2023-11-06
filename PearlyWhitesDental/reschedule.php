@@ -71,6 +71,7 @@ $dbcnx->close();
 	
 	<!-- javascript -->
 	<script type="text/javascript" src="input_display.js"></script>
+	<script type="text/javascript" src="btn-func.js"></script>
 
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
@@ -96,7 +97,7 @@ $dbcnx->close();
 						<a href="dashboard.php">My Account</a>
 
 						<!-- Logout Button -->
-						<a href="logout.php">Logout</a>
+						<a href="logout.php" onclick="return confirmLogout();">Log Out</a>
 					</div>
 				</div> 
 			</div>

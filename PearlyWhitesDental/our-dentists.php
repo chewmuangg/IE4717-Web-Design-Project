@@ -9,6 +9,9 @@
 	<title>Our Dentists | Pearly Whites Dental</title>
 	<meta charset="utf-8">
 
+	<!-- javascript -->
+	<script type="text/javascript" src="btn-func.js"></script>
+	
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
 </head>
@@ -48,7 +51,7 @@
 						<a href="dashboard.php">My Account</a>
 						
 						<!-- logout button -->
-						<a href="logout.php">Logout</a>
+						<a href="logout.php" onclick="return confirmLogout();">Log Out</a>
 					</div>
 				</div>
 			</div>

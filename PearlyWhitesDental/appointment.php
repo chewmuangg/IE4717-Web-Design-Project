@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+	session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -7,6 +10,7 @@
 
 	<!-- javascript-->
 	<script type="text/javascript" src="appt_form.js"></script>
+	<script type="text/javascript" src="btn-func.js"></script>
 
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="css/styles.css">
@@ -33,7 +37,7 @@
 						<a href="dashboard.php">My Account</a>
 						
 						<!-- Logout Button -->
-						<a href="logout.php">Logout</a>
+						<a href="logout.php" onclick="return confirmLogout();">Log Out</a>
 					</div>
 				</div> 
 			</div>
@@ -46,6 +50,17 @@
 		<div class="appt-form-container">
 			<h1>Book an Appointment</h1>
 			<form method="post" action="confirmation.php" id="appt-form">
+				<?php 
+					// show this div when dentist or admin is logged in 
+					if ($_SESSION['user_type'] == 9) {
+						echo "<div class='appt-form-patientId'>";
+						echo "<label for='patientId'>Patient's ID: </label>";
+						echo "<input type='text' name='patientId' id='patientId' placeholder='1xxx' required onkeyup='patientIdChecker()'>";
+						echo "<small id='patientId-error'></small>";
+						echo "</div>";
+					}
+				?>
+
 				<div class="appt-form-step">
 					<p>Step 1 of 3: Choose your dentist</p>
 					<div class="toggle-radio-grp">

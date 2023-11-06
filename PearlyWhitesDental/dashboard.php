@@ -86,7 +86,7 @@
 					case 1000:
 						// admin function
 						// query formulation
-						$apptQuery = "SELECT * FROM appointments ORDER BY date ASC";
+						$apptQuery = "SELECT * FROM appointments WHERE date > '".$currentDate."' ORDER BY date ASC";
 						break;
 						
 					default:
@@ -98,7 +98,7 @@
 			} else {
 				// retrieve patient's appointment details
 				// query formulation
-				$apptQuery = "SELECT * FROM appointments WHERE userId=".$_SESSION['user_id']." ORDER BY date ASC";
+				$apptQuery = "SELECT * FROM appointments WHERE userId=".$_SESSION['user_id']." AND date > '".$currentDate."' ORDER BY date ASC";
 				
 			}
 
@@ -137,7 +137,7 @@
 						<a href="dashboard.php">My Account</a>
 						
 						<!-- logout button -->
-						<a href="logout.php">Logout</a>
+						<a href="logout.php" onclick="return confirmLogout();">Log Out</a>
 					</div>
 				</div> 
 			</div>
@@ -167,8 +167,8 @@
 					<h2 <?php if($_SESSION['user_type'] == 1) echo 'style="display: none;"'; ?>>Scheduled Appointments</h2>
 
 					<!-- show button for patients accs, hide for dentists accs -->
-                    <!-- <a class="btn-pri" href="appointment.html" <?php if($_SESSION['user_type'] == 9) echo 'style="display: none;"'; ?>>Book an Appointment</a> -->
-                    <a class="btn-pri btn-book" href="appointment.html" >Book an Appointment</a>
+                    <!-- <a class="btn-pri" href="appointment.php" <?php if($_SESSION['user_type'] == 9) echo 'style="display: none;"'; ?>>Book an Appointment</a> -->
+                    <a class="btn-pri btn-book" href="appointment.php" >Book an Appointment</a>
                 </div>
 
 				<!-- start of an appointment card --> 
@@ -235,7 +235,7 @@
 						echo "</div>";
 
 						echo '<div class="row" style="gap: 24px;">';
-						echo "<a class='btn-outline btn-cancel' id='btn-delete' href='cancel.php?apptId=".$apptId."'>Cancel</a>";
+						echo "<a class='btn-outline btn-cancel' id='btn-delete' href='cancel.php?apptId=".$apptId."' onclick='return confirmDelete();'>Cancel</a>";
 						echo "<a class='btn-outline' href='reschedule.php?apptId=".$apptId."'>Reschedule</a>";
                 		echo "</div>";
 						
